@@ -2,595 +2,1025 @@
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Open Courses for Learning R | Rsquared Academy</title>
+  <meta name="description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <link rel="canonical" href="https://courses.rsquaredacademy.com/">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Rsquared Academy Open Courses">
-    <meta name="author" content="Rsquared Academy">
-    <link rel="canonical" href="https://courses.rsquaredacademy.com/" />
-    <title>Open Courses | Rsquared Academy</title>
-    <meta property="og:url" content="https://courses.rsquaredacademy.com/"/>
-    <meta property="og:title" content="Open Courses | Rsquared Academy "/>
-    <meta property="og:site_name" content="courses.rsquaredacademy.com"/>
-    <meta property="og:description" content="Open Courses by Rsquared Academy."/>
-    <meta property="og:image" content="https://courses.rsquaredacademy.com/images/hex_stickers.png"/>
-    <meta property="og:image:height" content="219"/>
-    <meta property="og:image:width" content="220"/>
-    <meta name="keywords" content="aravind hebbali, rsquared academy, rfm r package, rfm package, olsrr package, olsrr r package, descriptr r package, descriptr package, inferr package, inferr r package, blorr package, blorr r package, xplorerr, trainr, investorr, R, packages, library" />
-    <meta name="description" content="Open Courses developed by Rsquared Academy." />
-    <meta name="twitter:title" content="Open Courses | Rsquared Academy" />
-    <meta name="twitter:description" content="Open Courses developed by Rsquared Academy." />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@rsquaredacademy" />
-    <meta name="twitter:image" content="https://courses.rsquaredacademy.com/images/hex_stickers.png" />
-    <meta name="twitter:image:width" content="300" />
-    <meta name="twitter:image:height" content="300" />
-    <meta name="twitter:creator" content="@rsquaredacademy" />
-    <meta name="twitter:domain" content="courses.rsquaredacademy.com" />
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Rsquared Academy">
+  <meta property="og:title" content="Open Courses for Learning R | Rsquared Academy">
+  <meta property="og:description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <meta property="og:url" content="https://courses.rsquaredacademy.com/">
+  <meta property="og:image" content="https://courses.rsquaredacademy.com/assets/images/og-card.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rsquared Academy open courses">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rsquaredacademy">
+  <meta name="twitter:title" content="Open Courses for Learning R | Rsquared Academy">
+  <meta name="twitter:description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <meta name="twitter:image" content="https://courses.rsquaredacademy.com/assets/images/og-card.jpg">
+  <meta name="twitter:image:alt" content="Rsquared Academy open courses">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/heroic-features.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+  <meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
 
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/assets/fonts/source-sans-pro-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-sans-pro-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/icons.css" rel="stylesheet">
+  <link href="/assets/css/tokens.css" rel="stylesheet">
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Theme resolver: must run before first paint so a dark-preference
+       visitor never sees a white flash. The toggle handler itself lives in
+       main.js. Stored values are whitelisted before reaching the attribute. -->
+  <script>
+    (function () {
+      var KEY = "theme";
+      var VALID = ["light", "dark"];
+      function stored() {
+        try {
+          var v = window.localStorage.getItem(KEY);
+          return VALID.indexOf(v) !== -1 ? v : null;
+        } catch (e) { return null; }
+      }
+      var root = document.documentElement;
+      var choice = stored();
+      if (!choice) {
+        choice = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      root.setAttribute("data-theme", choice);
+      root.style.colorScheme = choice;
+    })();
+  </script>
+
+  <!-- TODO(replace): set the GA4 measurement ID for courses.rsquaredacademy.com
+       (placeholder below is NOT a live property). Nothing reaches Google until
+       the visitor chooses; without a choice the banner stays and no tag loads. -->
+  <script>
+    (function () {
+      "use strict";
+      var MEASUREMENT_ID = "G-XXXXXXXXXX";
+      var STORAGE_KEY = "ga-consent";
+      var DENIED = {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted"
+      };
+      function readChoice() {
+        try {
+          var v = window.localStorage.getItem(STORAGE_KEY);
+          return v === "granted" || v === "denied" ? v : null;
+        } catch (e) { return null; }
+      }
+      function writeChoice(v) {
+        try { window.localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode */ }
+      }
+      var loaded = false;
+      function loadGA4(choice) {
+        if (loaded || MEASUREMENT_ID === "G-XXXXXXXXXX") return;
+        loaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = window.gtag || gtag;
+        gtag("consent", "default", DENIED);
+        if (choice === "granted") {
+          gtag("consent", "update", {
+            ad_storage: "granted",
+            ad_user_data: "granted",
+            ad_personalization: "granted",
+            analytics_storage: "granted",
+            functionality_storage: "granted",
+            personalization_storage: "granted"
+          });
+        }
+        gtag("js", new Date());
+        gtag("config", MEASUREMENT_ID);
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + MEASUREMENT_ID;
+        document.head.appendChild(s);
+      }
+      function hideBanner() {
+        var el = document.getElementById("consent-banner");
+        if (el) el.remove();
+      }
+      function decide(choice) {
+        writeChoice(choice);
+        hideBanner();
+        loadGA4(choice);
+      }
+      function init() {
+        var existing = readChoice();
+        if (existing) { hideBanner(); loadGA4(existing); return; }
+        var banner = document.getElementById("consent-banner");
+        if (!banner) return;
+        var accept = document.getElementById("consent-accept");
+        var deny = document.getElementById("consent-deny");
+        if (accept) accept.addEventListener("click", function () { decide("granted"); });
+        if (deny) deny.addEventListener("click", function () { decide("denied"); });
+        banner.focus();
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Rsquared Academy",
+      "url": "https://www.rsquaredacademy.com/",
+      "logo": "https://courses.rsquaredacademy.com/assets/images/og-card.jpg",
+      "sameAs": [
+        "https://github.com/rsquaredacademy",
+        "https://www.linkedin.com/company/rsquared-academy",
+        "https://www.youtube.com/user/rsquaredin/"
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Rsquared Academy Open Courses",
+      "numberOfItems": 15,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Course",
+            "name": "Introduction to R",
+            "description": "In this introductory course, you will learn about R and its ecosystem. You will learn about the evolution of R, its current capabilities and the organizations working for the development of R. You will be introduced to RStudio, a very popular IDE, the R community, and tidyverse, a collection of R packages designed for data science.",
+            "url": "https://courses.rsquaredacademy.com/#introduction-to-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "R ecosystem and its evolution",
+              "RStudio, the popular IDE for R",
+              "The R community",
+              "tidyverse overview"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Course",
+            "name": "Import Data into R",
+            "description": "Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read data into R from different sources and in multiple formats. You will examine the challenges in reading data and use appropriate methods to address them.",
+            "url": "https://courses.rsquaredacademy.com/#import-data-into-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "Reading data from different sources",
+              "Multiple data formats",
+              "Common import challenges and fixes"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Course",
+            "name": "Import Excel Data into R",
+            "description": "Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read Excel data into R. You will examine the challenges in reading Excel data and use appropriate methods to address them.",
+            "url": "https://courses.rsquaredacademy.com/#import-excel-data-into-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "Reading Excel workbooks",
+              "Sheet and range handling",
+              "Common Excel import challenges and fixes"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Course",
+            "name": "Data Wrangling with dplyr - Part I",
+            "description": "In this course, you will master techniques for data manipulation using the dplyr package. You will learn to filter, select, sort, mutate and summarize data. You will learn to join tables, make your code readable using pipes and use tibbles instead of data frames.",
+            "url": "https://courses.rsquaredacademy.com/#data-wrangling-with-dplyr-part-1",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "filter and select",
+              "arrange and mutate",
+              "summarise and group_by"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Course",
+            "name": "Data Wrangling with dplyr - Part II",
+            "description": "In this course, you will learn to join tables using dplyr's two table verbs. Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. You will learn the best ways to combine split data sets to create single tables for your data analysis pipeline.",
+            "url": "https://courses.rsquaredacademy.com/#data-wrangling-with-dplyr-part-2",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "dplyr's two-table verbs",
+              "Join types in practice",
+              "Combining split data sets"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Course",
+            "name": "Data Wrangling with dplyr - Part III",
+            "description": "Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. As such reshaping data is an invaluable skill set for a data scientist. In this course, you will master sophisticated techniques for data manipulation using the dplyr package.",
+            "url": "https://courses.rsquaredacademy.com/#data-wrangling-with-dplyr-part-3",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "Reshaping data",
+              "Advanced manipulation techniques",
+              "Sophisticated dplyr workflows"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Course",
+            "name": "Introduction to tibbles",
+            "description": "Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. In this course, you will learn about tibbles, an alternative for data frames.",
+            "url": "https://courses.rsquaredacademy.com/#introduction-to-tibbles",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "tibbles vs data frames",
+              "Creating tibbles",
+              "Subsetting tibbles"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "Course",
+            "name": "Readable Code with Pipes",
+            "description": "R code contains a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. The magrittr package by Stefan Milton Bache provides pipes enabling us to write R code that is readable.",
+            "url": "https://courses.rsquaredacademy.com/#readable-code-with-pipes",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "The magrittr pipe operator",
+              "Rewriting nested calls",
+              "Readable code sequences"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "Course",
+            "name": "Handling Date & Time in R",
+            "description": "This course is designed to give you a comprehensive introduction to handling date and time data in R. If you are someone who deals with data, you would know that date/time come in all possible weird formats. As such, it is important to know how to parse, manipulate and compute with date and time.",
+            "url": "https://courses.rsquaredacademy.com/#handling-date-and-time-in-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "Parsing date and time values",
+              "Components and arithmetic",
+              "Time zones with lubridate"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "Course",
+            "name": "Regular Expressions in R",
+            "description": "In this course, we will learn about using regular expressions in R. While it is aimed at absolute beginners, we hope experienced users will find it useful as well. The post is broadly divided into three sections. In the first section, we will introduce the pattern matching functions such as grep, grepl etc. as we will be using them in the rest of the post.",
+            "url": "https://courses.rsquaredacademy.com/#regular-expressions-in-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "Pattern matching syntax",
+              "grep and grepl family of functions",
+              "Substitution and extraction"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "Course",
+            "name": "Practical Introduction to Webscraping in R",
+            "description": "Are you trying to compare prices of products across websites? Are you trying to monitor price changes every hour? Or planning to do some text mining or sentiment analysis on reviews of products or services? If yes, how would you do that? In this course, we will learn about web scraping using R.",
+            "url": "https://courses.rsquaredacademy.com/#webscraping-in-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Advanced",
+            "teaches": [
+              "How web scraping works",
+              "Extracting data from web pages",
+              "Text mining and sentiment analysis uses"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "Course",
+            "name": "Association Rule Mining in R",
+            "description": "Ever wondered why items are displayed in a particular way in retail/online stores. Why certain items are suggested to you based on what you have added to the cart? Blame it on market basket analysis or association rule mining.",
+            "url": "https://courses.rsquaredacademy.com/#association-rule-mining-in-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Advanced",
+            "teaches": [
+              "Market basket analysis",
+              "Support, confidence and lift",
+              "Association rules in practice"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "Course",
+            "name": "Customer Segmentation using RFM Analysis",
+            "description": "In this course, students will learn to segment customers using recency, frequency and monetary value analysis. Students will look at a case study to understand how RFM can be used to segment customers and tailor offers to them. They will understand the difference between transaction level data and customer level data.",
+            "url": "https://courses.rsquaredacademy.com/#customer-segmentation-using-rfm-analysis",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "Recency, frequency, monetary value",
+              "Transaction vs customer level data",
+              "Segmenting customers"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "Course",
+            "name": "Working with Databases using R",
+            "description": "In this course, you will learn to interact with databases from R. From connecting to different databases from R, using SQL script in RStudio and the SQL engine in knitr while working with RMarkdown documents to querying, visualizing and modeling data while securely handling database credentials.",
+            "url": "https://courses.rsquaredacademy.com/#working-with-databases-using-r",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Intermediate",
+            "teaches": [
+              "Connecting to databases from R",
+              "SQL in RStudio and knitr",
+              "Querying, visualizing and modeling",
+              "Handling credentials securely"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "Course",
+            "name": "Command Line Basics",
+            "description": "In this course, you will be introduced to shell commands. Our goal was to ensure that after completing this tutorial, readers should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R and RMarkdown and execute R scripts in the shell.",
+            "url": "https://courses.rsquaredacademy.com/#command-line-basics",
+            "provider": {
+              "@type": "Organization",
+              "name": "Rsquared Academy"
+            },
+            "educationalLevel": "Beginner",
+            "teaches": [
+              "Shell fundamentals",
+              "Version control and cloud services",
+              "Running R and R scripts from the shell"
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "online",
+              "courseWorkload": "PT2H"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <!-- Built 2026-10-09 from data/courses.json by tools/build.mjs - do not edit directly -->
 </head>
 
 <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Rsquared Academy</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="https://pkgs.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">Home</a>
-                    </li>
-                    <li>
-                        <a href="https://rsquared-academy.thinkific.com/" target="_blank" rel="noopener noreferrer">Courses</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Resources <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        <li>
-                          <a href="https://pkgs.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">R Packages</a>
-                        </li>
-                        <li>
-                            <a href="https://blog.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">Blog</a>
-                        </li>
-                        <li>
-                            <a href="https://ebooks.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">e-books</a>
-                        </li>
-                        <li>
-                            <a href="https://apps.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">Shiny Apps</a>
-                        </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- social media icons -->
-                <ul class="nav navbar-nav navbar-right social">
-                    <li><a href="https://github.com/rsquaredacademy" target="_blank" rel="noopener noreferrer"><i class="fa fa-lg fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/rsquaredacademy" target="_blank" rel="noopener noreferrer"><i class="fa fa-lg fa-twitter"></i></a></li>
-                    <li><a href="https://www.youtube.com/user/rsquaredin/" target="_blank" rel="noopener noreferrer"><i class="fa fa-lg fa-youtube"></i></a></li>
-                    <li><a href="https://in.linkedin.com/company/rsquared-academy" target="_blank" rel="noopener noreferrer"><i class="fa fa-lg fa-linkedin"></i></a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Jumbotron Header -->
-      <!--  <header class="jumbotron hero-spacer"> -->
-        <div class = "row text-left"> 
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <br>
-            <br>
-            <br>
-            <p class = 'text-justify'>Welcome to Rsquared Academy open courses. Here, you will 
-            	find contents of all our self paced online courses. We have created this specifically
-            	for those who do not like to sign up on a platform to access course contents. We hope
-            	you will find the courses here useful in your data science learning journey. Feedback is 
-            	always welcome. If you see mistakes or want to suggest changes, please reach out to us at support@rsquaredacademy.com.
-            </p>
-          </div>
-
-          <div class="col-md-6 col-sm-3">
-            <div class="text-center">
-              <br>
-              <br>
-              <p>
-                <img src="images/hex_stickers.png" width="400px" alt="">
-              </p>
-            </div>
-          </div>
-        </div>
-        <!--- </header> -->
-
-        <hr>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_intro_r.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-9">
-          </div>  -->
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Introduction to R</h3>
-            <p class="text-justify">In this introductory course, you will learn about R and its ecosystem. You will learn about the evolution of R, its current capabilities & the organizations working for the development of R. You will be introduced to RStudio, a very popular IDE, the R community, and tidyverse, a collection of R packages designed for data science.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/introduction-to-r" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-eiu-_PK65TsTNQR6_a5hpb" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              Blog Post: <a href="https://blog.rsquaredacademy.com/variables-in-r/" target="_blank" rel="noopener noreferrer">1</a>&nbsp;<a href="https://blog.rsquaredacademy.com/data-types-in-r/" target="_blank" rel="noopener noreferrer">2</a>&nbsp;<a href="https://blog.rsquaredacademy.com/getting-help-in-r-updated/" target="_blank" rel="noopener noreferrer">3</a>&nbsp;<a href="https://blog.rsquaredacademy.com/beginners-guide-to-r-package-ecosystem/" target="_blank" rel="noopener noreferrer">4</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://intro-r.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;  
-              Slides: <a href="https://slides.rsquaredacademy.com/intro/intro.html" target="_blank" rel="noopener noreferrer">1</a>&nbsp;<a href="https://slides.rsquaredacademy.com/intro/help/help.html" target="_blank" rel="noopener noreferrer">2</a>&nbsp;<a href="https://slides.rsquaredacademy.com/intro/packages/packages.html" target="_blank" rel="noopener noreferrer">3</a>&nbsp;<a href="https://slides.rsquaredacademy.com/intro/variables/variables.html" target="_blank" rel="noopener noreferrer">4</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;            
-              
-            </p>
-          </div>
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_import.png" height="150px" alt="">
-              </p>
-            </div>  
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-9">
-          </div>  -->
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Import Data into R</h3>
-            <p class="text-justify">Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read data into R from different sources and in multiple formats. You will examine the challenges in reading data and use appropriate methods to address them.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-1" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-crIKICpBY2DrsLQo1V0fwd" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/import-data-into-r-part-1/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/import1.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/import/import-part-1.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_import_excel.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-9">
-          </div>  -->
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Import Excel Data into R</h3>
-            <p class="text-justify">Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read data into R from different sources and in multiple formats. You will examine the challenges in reading data and use appropriate methods to address them.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-2" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=-Iqnh4e_-qY&list=PLDfCKV3ey8-ebirC_g7aKWFKUyNw1dsno" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/import-data-into-r-part-2/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/import2.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/import/import-data.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_dplyr_part_1.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-9">
-          </div>  -->
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Data Wrangling with dplyr - Part I</h3>
-            <p class="text-justify">In this course, you will master techniques for data manipulation using the dplyr package. You will learn to filter, select, sort, mutate and summarize data. You will learn to join tables, make your code readable using pipes and use tibbles instead of data frames.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-1" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=LLTpn9QBni4&list=PLDfCKV3ey8-eo7wMZ07DtxCcoR5edxhnl" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-1/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/dplyr1.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-1.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_dplyr_part_2.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <!-- <div class="col-md-3 col-sm-9">
-          </div>  -->
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Data Wrangling with dplyr - Part II</h3>
-            <p class="text-justify">In this course, you will learn to join tables using dplyr's two table verbs. Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. You will learn the best ways to combine split data sets to create single tables for your data analysis pipeline.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-2" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=gS7pi2Vwj7w&list=PLDfCKV3ey8-eEh3NRVkYO61--zU5Fhswc" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-2/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/dplyr2.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-2.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_dplyr_part_3.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Data Wrangling with dplyr - Part III</h3>
-            <p class="text-justify">Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. As such reshaping data is an invaluable skill set for a data scientist. In this course, you will master sophisticated techniques for data manipulation using the dplyr package. </p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-3" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=xg5L2cxNV4o&list=PLDfCKV3ey8-ePKsS11y5uAXpnydpzOD2n" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-3/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/dplyr3.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-3.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_tibbles.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Introduction to tibbles</h3>
-            <p class="text-justify">Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. As such reshaping data is an invaluable skill set for a data scientist. In this course, you will learn about tibbles, an alternative for dataframes.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/introduction-to-tibbles" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=yUu8yK_NEZs&list=PLDfCKV3ey8-frtlRpGGqA8-2f086SyR7x" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/introduction-to-tibbles/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/tibbles.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/tibbles/tibbles.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_pipes.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Readable Code with Pipes</h3>
-            <p class="text-justify">R code contain a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. The magrittr package by Stefan Milton Bache provides pipes enabling us to write R code that is readable.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/readable-code-with-pipes" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=8uWzrQDtaHk&list=PLDfCKV3ey8-cZgy2Qu7FxuA3Pzdv6-35o" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/readable-code-with-pipes/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/pipes.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/pipes/pipes.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-            <div class="col-md-3 col-sm-3">
-              <br>
-              <br>
-              <div class="text-center">
-                <p>
-                  <img src="images/course_card_web_scraping.png" height="150px" alt="">
-                </p>
-              </div>
-            </div>
-
-            
-            <div class="col-md-6 col-sm-9">
-              <br>
-              <h3>Practical Introduction to Webscraping in R</h3>
-              <p class="text-justify">Are you trying to compare price of products across websites? Are you trying to monitor price changes every hour? Or planning to do some text mining or sentiment analysis on reviews of products or services? If yes, how would you do that? In this course, we will learn about web scraping using R.</p>
-              <p>
-              <a href="https://www.youtube.com/watch?v=l37n_HDD1qs" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/web-scraping/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/web-scraping/web-scraping.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>
-              </p>
-            </div>
-            
-          </div>
-
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_mba.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-  
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Association Rule Mining in R</h3>
-            <p class="text-justify">Ever wondered why items are displayed in a particular way in retail/online stores. Why certain items are suggested to you based on what you have added to the cart? Blame it on market basket analysis or association rule mining.</p>
-            <p>
-              <a href="https://blog.rsquaredacademy.com/market-basket-analysis-in-r/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/mba/mba.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/335377" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_regex.jpg" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-  
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Regular Expressions in R</h3>
-            <p class="text-justify">In this course, we will learn about using regular expressions in R. While it is aimed at absolute beginners, we hope experienced users will find it useful as well. The post is broadly divided into 3 sections. In the first section, we will introduce the pattern matching functions such as grep, grepl etc. as we will be using them in the rest of the post.</p>
-            <p>
-              <a href="https://blog.rsquaredacademy.com/regular-expression-in-r/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/regex/regex.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/356612" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_rfm.png" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-  
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Customer Segmentation using RFM Analysis</h3>
-            <p class="text-justify">In this course, students will learn to segment customers using recency, frequency and monetary value analysis. Students will look at a case study to understand how RFM can be used to segment customers and tailor offers to them. They will understand the difference between transaction level data and customer level data.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/customer-segmentation-using-rfm-analysis" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=275X7yaSsoQ" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/customer-segmentation-using-rfm-analysis/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/rfm/rfm.html" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/416146" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_rdbi.png" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-  
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Working with Databases using R</h3>
-            <p class="text-justify">In this course, you will learn to interact with databases from R. From connecting to different databases from R, using SQL script in RStudio & the SQL engine in knitr while working with RMarkdown documents to querying, visualizing and modeling data while securely handling database credentials.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/working-with-databases-using-r" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=bPlGPmjPFeU" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/working-with-databases-using-r/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rdbsql.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/sql/sqlite.html#/section" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/430439" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-          
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/course_card_cline.png" height="150px" alt="">
-              </p>
-            </div>
-          </div>
-
-  
-          <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Command Line Basics</h3>
-            <p class="text-justify">In this course, you will be introduced to shell commands. Our goal was to ensure that after completing this tutorial, readers should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R & RMarkdown and execute R scripts in the shell.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/command-line-basics-for-r-users" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/watch?v=62hgg26RCC0&list=PLDfCKV3ey8-cJpfx1fakjr039hK1vqtUP" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/command-line-basics-for-r-users/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://bash-intro.rsquaredacademy.com/" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/github/shell.pdf" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/518720" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-
-        </div>
-
-        <div class = "row text-left"> 
-
-          <div class="col-md-3 col-sm-3">
-            <br>
-            <br>
-            <div class="text-center">
-              <p>
-                <img src="images/handling-date-and-time-in-r.png" height="150px" width="270px" alt="">
-              </p>
-            </div>
-          </div>
-
-           <div class="col-md-6 col-sm-9">
-            <br>
-            <h3>Handling Date & Time in R</h3>
-            <p class="text-justify">This course is designed to give you a comprehensive introduction to handling date and time data in R. If you are someone who deals with data, you would know that date/time come in all possible weird formats. As such, it is important to know how to parse, manipulate and compute with date and time in R.</p>
-            <p>
-              <a href="https://rsquared-academy.thinkific.com/courses/handling-date-and-time-in-R" target="_blank" rel="noopener noreferrer">Online Course</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-d6pEkC7z7jeqci1rsDqQPm" target="_blank" rel="noopener noreferrer">YouTube</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://blog.rsquaredacademy.com/handling-date-and-time-in-r/" target="_blank" rel="noopener noreferrer">Blog Post</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://wrangle-r.rsquaredacademy.com/lubridate.html" target="_blank" rel="noopener noreferrer">ebook</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://slides.rsquaredacademy.com/data-wrangling/lubridate/datetime.html#/" target="_blank" rel="noopener noreferrer">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer">GitHub</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://rstudio.cloud/project/1072419" target="_blank" rel="noopener noreferrer">RStudio Cloud</a>
-            </p>
-          </div>
-          
-        </div>
-
-
-
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; <a href="https://www.rsquaredacademy.com" target="_blank" rel="noopener noreferrer">Rsquared Academy</a> 2014-2022</p>
-                </div>
-            </div>
-        </footer>
-
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="navbar-brand" href="https://www.rsquaredacademy.com/">Rsquared Academy</a>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+      </button>
+
+      <nav class="main-nav collapse" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/" aria-current="page">Courses</a></li>
+          <li><a href="https://pkgs.rsquaredacademy.com/">R Packages</a></li>
+          <li><a href="https://apps.rsquaredacademy.com/">Shiny Apps</a></li>
+          <li><a href="https://ebooks.rsquaredacademy.com/">e-books</a></li>
+          <li><a href="https://www.rsquaredacademy.com/">Teaching</a></li>
+          <li><a href="https://blog.rsquaredacademy.com/">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-link" href="https://github.com/rsquaredacademy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="theme-toggle" aria-label="Switch colour theme">
+          <i class="bi bi-moon-fill theme-icon-dark" aria-hidden="true"></i>
+          <i class="bi bi-sun-fill theme-icon-light" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
-    <!-- /.container -->
+  </header>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+  <main id="main" class="wrap">
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="row hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Rsquared Academy &middot; Open Courses</p>
+          <h1 id="hero-title">Open Courses</h1>
+          <p class="lead">Free, self-paced R courses &mdash; no sign-up, no platform, just the contents.</p>
+          <p class="hero-desc">Welcome to Rsquared Academy open courses. Here you&rsquo;ll find the complete content of all our self-paced courses: videos, guides, e-book chapters, slides and code. We built this for everyone who would rather not sign up on a platform to access course material. Feedback is always welcome &mdash; reach out at
+            <a href="mailto:support@rsquaredacademy.com">support@rsquaredacademy.com</a>.</p>
+          <ul class="stats">
+            <li><strong>15</strong> courses</li>
+            <li><strong>5</strong> tracks</li>
+            <li>Beginner &rarr; Advanced</li>
+            <li>Free &amp; open</li>
+            <li>No sign-up</li>
+          </ul>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="https://rsquared-academy.thinkific.com/courses/introduction-to-r" ext" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-book" aria-hidden="true"></i>Start with Intro to R
+            </a>
+            <a class="btn" href="#courses">
+              Browse courses <i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+            </a>
+          </p>
+        </div>
+        <div class="hero-art">
+          <img src="/assets/images/hex_stickers.webp" alt="Hex stickers of Rsquared Academy R packages" width="280" height="280" decoding="async">
+        </div>
+      </div>
+    </section>
 
+    <section aria-labelledby="path-title">
+      <h2 id="path-title">Learning path</h2>
+      <p>Follow the tracks in order, or jump in wherever your current project needs. Each card below links to every format of that course.</p>
+      <div class="lpath">
+        <div class="lstep">
+          <span class="num">01</span>
+          <h3>Foundations</h3>
+          <p>The R ecosystem and IDE, then importing flat files and Excel workbooks.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">02</span>
+          <h3>Wrangling</h3>
+          <p>dplyr in three parts, tibbles, pipes and date &amp; time handling.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">03</span>
+          <h3>Text &amp; Web</h3>
+          <p>Regular expressions first, then put them to work scraping the web.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">04</span>
+          <h3>Applied Analytics</h3>
+          <p>RFM segmentation, market basket analysis and database workflows.</p>
+        </div>
+      </div>
+      <p class="lshortcut">Comfortable with R already? Jump straight to <a href="#data-wrangling-with-dplyr-part-1">02 Wrangling</a>. Command Line Basics is a companion that pairs well with any track.</p>
+    </section>
+
+    <section id="courses" aria-labelledby="courses-title">
+      <h2 id="courses-title">Courses</h2>
+
+      <div class="filterbar">
+        <div class="chips" role="group" aria-label="Filter courses by track">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All (15)</button>
+          <button type="button" class="chip" data-filter="foundations" aria-pressed="false">Foundations (3)</button>
+          <button type="button" class="chip" data-filter="wrangling" aria-pressed="false">Wrangling (6)</button>
+          <button type="button" class="chip" data-filter="text-web" aria-pressed="false">Text &amp; Web (2)</button>
+          <button type="button" class="chip" data-filter="applied" aria-pressed="false">Applied Analytics (3)</button>
+          <button type="button" class="chip" data-filter="tooling" aria-pressed="false">Tooling (1)</button>
+        </div>
+        <div class="search">
+          <label class="visually-hidden" for="course-search">Search courses</label>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <input type="search" id="course-search" placeholder="Filter by title, topic or chapter&hellip;" autocomplete="off">
+        </div>
+      </div>
+
+      <p class="result-count" id="filter-status" role="status" aria-live="polite"></p>
+      <p id="no-results" hidden>No courses match your filter. Try clearing the search box or selecting All.</p>
+
+      <div class="lgrid">
+          <article class="lcard course-card" id="introduction-to-r" data-track="foundations" data-search="introduction to r in this introductory course, you will learn about r and its ecosystem. you will learn about the evolution of r, its current capabilities and the organizations working for the development of r. you will be introduced to rstudio, a very popular ide, the r community, and tidyverse, a collection of r packages designed for data science. r ecosystem and its evolution rstudio, the popular ide for r the r community tidyverse overview online course youtube playlist blog: variables in r blog: data types in r blog: getting help in r blog: r package ecosystem ebook slides: introduction slides: getting help slides: packages slides: variables github">
+            <img class="lcover" src="/assets/images/course_card_intro_r.webp" alt="Course thumbnail: Introduction to R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Foundations<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/introduction-to-r" target="_blank" rel="noopener noreferrer">Introduction to R</a></h2>
+              <p class="lout">In this introductory course, you will learn about R and its ecosystem. You will learn about the evolution of R, its current capabilities and the organizations working for the development of R. You will be introduced to RStudio, a very popular IDE, the R community, and tidyverse, a collection of R packages designed for data science.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>R ecosystem and its evolution</li><li>RStudio, the popular IDE for R</li><li>The R community</li><li>tidyverse overview</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/introduction-to-r" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-eiu-_PK65TsTNQR6_a5hpb" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube playlist</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/variables-in-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Variables in R</span></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/data-types-in-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Data Types in R</span></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/getting-help-in-r-updated/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Getting Help in R</span></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/beginners-guide-to-r-package-ecosystem/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: R Package Ecosystem</span></a>
+              <a class="labtn" href="https://intro-r.rsquaredacademy.com/"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/intro/intro.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Introduction</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/intro/help/help.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Getting Help</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/intro/packages/packages.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Packages</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/intro/variables/variables.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Variables</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="import-data-into-r" data-track="foundations" data-search="import data into r importing or reading data is one of the most basic and crucial stages of data analysis. in this introductory course, you will learn to read data into r from different sources and in multiple formats. you will examine the challenges in reading data and use appropriate methods to address them. reading data from different sources multiple data formats common import challenges and fixes online course youtube playlist blog: import data into r ebook chapter slides: import data part 1 github">
+            <img class="lcover" src="/assets/images/course_card_import.webp" alt="Course thumbnail: Import Data into R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Foundations<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-1" target="_blank" rel="noopener noreferrer">Import Data into R</a></h2>
+              <p class="lout">Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read data into R from different sources and in multiple formats. You will examine the challenges in reading data and use appropriate methods to address them.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Reading data from different sources</li><li>Multiple data formats</li><li>Common import challenges and fixes</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-1" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-crIKICpBY2DrsLQo1V0fwd" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube playlist</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/import-data-into-r-part-1/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Import Data into R</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/import1.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/import/import-part-1.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Import Data Part 1</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="import-excel-data-into-r" data-track="foundations" data-search="import excel data into r importing or reading data is one of the most basic and crucial stages of data analysis. in this introductory course, you will learn to read excel data into r. you will examine the challenges in reading excel data and use appropriate methods to address them. reading excel workbooks sheet and range handling common excel import challenges and fixes online course youtube video blog: import excel data into r ebook chapter slides: import data part 2 github">
+            <img class="lcover" src="/assets/images/course_card_import_excel.webp" alt="Course thumbnail: Import Excel Data into R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Foundations<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-2" target="_blank" rel="noopener noreferrer">Import Excel Data into R</a></h2>
+              <p class="lout">Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read Excel data into R. You will examine the challenges in reading Excel data and use appropriate methods to address them.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Reading Excel workbooks</li><li>Sheet and range handling</li><li>Common Excel import challenges and fixes</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-2" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=-Iqnh4e_-qY&amp;list=PLDfCKV3ey8-ebirC_g7aKWFKUyNw1dsno" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/import-data-into-r-part-2/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Import Excel Data into R</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/import2.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/import/import-data.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Import Data Part 2</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="data-wrangling-with-dplyr-part-1" data-track="wrangling" data-search="data wrangling with dplyr - part i in this course, you will master techniques for data manipulation using the dplyr package. you will learn to filter, select, sort, mutate and summarize data. you will learn to join tables, make your code readable using pipes and use tibbles instead of data frames. filter and select arrange and mutate summarise and group_by online course youtube video blog: data wrangling part 1 ebook chapter slides: dplyr part 1 github">
+            <img class="lcover" src="/assets/images/course_card_dplyr_part_1.webp" alt="Course thumbnail: Data Wrangling with dplyr Part I" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-1" target="_blank" rel="noopener noreferrer">Data Wrangling with dplyr - Part I</a></h2>
+              <p class="lout">In this course, you will master techniques for data manipulation using the dplyr package. You will learn to filter, select, sort, mutate and summarize data. You will learn to join tables, make your code readable using pipes and use tibbles instead of data frames.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>filter and select</li><li>arrange and mutate</li><li>summarise and group_by</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-1" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=LLTpn9QBni4&amp;list=PLDfCKV3ey8-eo7wMZ07DtxCcoR5edxhnl" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-1/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Data Wrangling Part 1</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/dplyr1.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-1.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: dplyr Part 1</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="data-wrangling-with-dplyr-part-2" data-track="wrangling" data-search="data wrangling with dplyr - part ii in this course, you will learn to join tables using dplyr's two table verbs. data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. you will learn the best ways to combine split data sets to create single tables for your data analysis pipeline. dplyr's two-table verbs join types in practice combining split data sets online course youtube video blog: data wrangling part 2 ebook chapter slides: dplyr part 2 github">
+            <img class="lcover" src="/assets/images/course_card_dplyr_part_2.webp" alt="Course thumbnail: Data Wrangling with dplyr Part II" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-2" target="_blank" rel="noopener noreferrer">Data Wrangling with dplyr - Part II</a></h2>
+              <p class="lout">In this course, you will learn to join tables using dplyr's two table verbs. Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. You will learn the best ways to combine split data sets to create single tables for your data analysis pipeline.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>dplyr's two-table verbs</li><li>Join types in practice</li><li>Combining split data sets</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-2" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=gS7pi2Vwj7w&amp;list=PLDfCKV3ey8-eEh3NRVkYO61--zU5Fhswc" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-2/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Data Wrangling Part 2</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/dplyr2.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-2.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: dplyr Part 2</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="data-wrangling-with-dplyr-part-3" data-track="wrangling" data-search="data wrangling with dplyr - part iii data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. as such reshaping data is an invaluable skill set for a data scientist. in this course, you will master sophisticated techniques for data manipulation using the dplyr package. reshaping data advanced manipulation techniques sophisticated dplyr workflows online course youtube video blog: data wrangling part 3 ebook chapter slides: dplyr part 3 github">
+            <img class="lcover" src="/assets/images/course_card_dplyr_part_3.webp" alt="Course thumbnail: Data Wrangling with dplyr Part III" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-3" target="_blank" rel="noopener noreferrer">Data Wrangling with dplyr - Part III</a></h2>
+              <p class="lout">Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. As such reshaping data is an invaluable skill set for a data scientist. In this course, you will master sophisticated techniques for data manipulation using the dplyr package.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Reshaping data</li><li>Advanced manipulation techniques</li><li>Sophisticated dplyr workflows</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-3" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=xg5L2cxNV4o&amp;list=PLDfCKV3ey8-ePKsS11y5uAXpnydpzOD2n" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-3/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Data Wrangling Part 3</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/dplyr3.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-3.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: dplyr Part 3</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="introduction-to-tibbles" data-track="wrangling" data-search="introduction to tibbles data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. in this course, you will learn about tibbles, an alternative for data frames. tibbles vs data frames creating tibbles subsetting tibbles online course youtube video blog: introduction to tibbles ebook chapter slides: tibbles github">
+            <img class="lcover" src="/assets/images/course_card_tibbles.webp" alt="Course thumbnail: Introduction to tibbles" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/introduction-to-tibbles" target="_blank" rel="noopener noreferrer">Introduction to tibbles</a></h2>
+              <p class="lout">Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. In this course, you will learn about tibbles, an alternative for data frames.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>tibbles vs data frames</li><li>Creating tibbles</li><li>Subsetting tibbles</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/introduction-to-tibbles" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=yUu8yK_NEZs&amp;list=PLDfCKV3ey8-frtlRpGGqA8-2f086SyR7x" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/introduction-to-tibbles/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Introduction to tibbles</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/tibbles.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/tibbles/tibbles.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: tibbles</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="readable-code-with-pipes" data-track="wrangling" data-search="readable code with pipes r code contains a lot of parentheses in case of a sequence of multiple operations. when you are dealing with complex code, it results in nested function calls which are hard to read and maintain. the magrittr package by stefan milton bache provides pipes enabling us to write r code that is readable. the magrittr pipe operator rewriting nested calls readable code sequences online course youtube video blog: readable code with pipes ebook chapter slides: pipes github">
+            <img class="lcover" src="/assets/images/course_card_pipes.webp" alt="Course thumbnail: Readable Code with Pipes" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/readable-code-with-pipes" target="_blank" rel="noopener noreferrer">Readable Code with Pipes</a></h2>
+              <p class="lout">R code contains a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. The magrittr package by Stefan Milton Bache provides pipes enabling us to write R code that is readable.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>The magrittr pipe operator</li><li>Rewriting nested calls</li><li>Readable code sequences</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/readable-code-with-pipes" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=8uWzrQDtaHk&amp;list=PLDfCKV3ey8-cZgy2Qu7FxuA3Pzdv6-35o" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/readable-code-with-pipes/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Readable Code with Pipes</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/pipes.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/pipes/pipes.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: pipes</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="handling-date-and-time-in-r" data-track="wrangling" data-search="handling date &amp; time in r this course is designed to give you a comprehensive introduction to handling date and time data in r. if you are someone who deals with data, you would know that date/time come in all possible weird formats. as such, it is important to know how to parse, manipulate and compute with date and time. parsing date and time values components and arithmetic time zones with lubridate online course youtube playlist blog: handling date &amp; time in r ebook chapter slides: date &amp; time github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/handling-date-and-time-in-r.webp" alt="Course thumbnail: Handling Date &amp; Time in R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Wrangling<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/handling-date-and-time-in-R" target="_blank" rel="noopener noreferrer">Handling Date &amp; Time in R</a></h2>
+              <p class="lout">This course is designed to give you a comprehensive introduction to handling date and time data in R. If you are someone who deals with data, you would know that date/time come in all possible weird formats. As such, it is important to know how to parse, manipulate and compute with date and time.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Parsing date and time values</li><li>Components and arithmetic</li><li>Time zones with lubridate</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/handling-date-and-time-in-R" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/playlist?list=PLDfCKV3ey8-d6pEkC7z7jeqci1rsDqQPm" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube playlist</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/handling-date-and-time-in-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Handling Date &amp; Time in R</span></a>
+              <a class="labtn" href="https://wrangle-r.rsquaredacademy.com/lubridate.html"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook chapter</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/data-wrangling/lubridate/datetime.html#/"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Date &amp; Time</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/1072419" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="regular-expressions-in-r" data-track="text-web" data-search="regular expressions in r in this course, we will learn about using regular expressions in r. while it is aimed at absolute beginners, we hope experienced users will find it useful as well. the post is broadly divided into three sections. in the first section, we will introduce the pattern matching functions such as grep, grepl etc. as we will be using them in the rest of the post. pattern matching syntax grep and grepl family of functions substitution and extraction blog: regular expressions in r slides: regular expressions github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/course_card_regex.webp" alt="Course thumbnail: Regular Expressions in R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Text &amp; Web<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://blog.rsquaredacademy.com/regular-expression-in-r/">Regular Expressions in R</a></h2>
+              <p class="lout">In this course, we will learn about using regular expressions in R. While it is aimed at absolute beginners, we hope experienced users will find it useful as well. The post is broadly divided into three sections. In the first section, we will introduce the pattern matching functions such as grep, grepl etc. as we will be using them in the rest of the post.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Pattern matching syntax</li><li>grep and grepl family of functions</li><li>Substitution and extraction</li></ul></details>
+              <p class="lactions">
+              <a class="labtn" href="https://blog.rsquaredacademy.com/regular-expression-in-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Regular Expressions in R</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/regex/regex.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Regular Expressions</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/356612" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="webscraping-in-r" data-track="text-web" data-search="practical introduction to webscraping in r are you trying to compare prices of products across websites? are you trying to monitor price changes every hour? or planning to do some text mining or sentiment analysis on reviews of products or services? if yes, how would you do that? in this course, we will learn about web scraping using r. how web scraping works extracting data from web pages text mining and sentiment analysis uses youtube video blog: web scraping slides: web scraping github">
+            <img class="lcover" src="/assets/images/course_card_web_scraping.webp" alt="Course thumbnail: Practical Introduction to Webscraping in R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Text &amp; Web<span class="lpill adv">Advanced</span></p>
+              <h2><a href="https://www.youtube.com/watch?v=l37n_HDD1qs" target="_blank" rel="noopener noreferrer">Practical Introduction to Webscraping in R</a></h2>
+              <p class="lout">Are you trying to compare prices of products across websites? Are you trying to monitor price changes every hour? Or planning to do some text mining or sentiment analysis on reviews of products or services? If yes, how would you do that? In this course, we will learn about web scraping using R.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>How web scraping works</li><li>Extracting data from web pages</li><li>Text mining and sentiment analysis uses</li></ul></details>
+              <p class="lactions">
+              <a class="labtn" href="https://www.youtube.com/watch?v=l37n_HDD1qs" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/web-scraping/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Web Scraping</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/web-scraping/web-scraping.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Web Scraping</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="association-rule-mining-in-r" data-track="applied" data-search="association rule mining in r ever wondered why items are displayed in a particular way in retail/online stores. why certain items are suggested to you based on what you have added to the cart? blame it on market basket analysis or association rule mining. market basket analysis support, confidence and lift association rules in practice blog: market basket analysis slides: market basket analysis github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/course_card_mba.webp" alt="Course thumbnail: Association Rule Mining in R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Applied Analytics<span class="lpill adv">Advanced</span></p>
+              <h2><a href="https://blog.rsquaredacademy.com/market-basket-analysis-in-r/">Association Rule Mining in R</a></h2>
+              <p class="lout">Ever wondered why items are displayed in a particular way in retail/online stores. Why certain items are suggested to you based on what you have added to the cart? Blame it on market basket analysis or association rule mining.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Market basket analysis</li><li>Support, confidence and lift</li><li>Association rules in practice</li></ul></details>
+              <p class="lactions">
+              <a class="labtn" href="https://blog.rsquaredacademy.com/market-basket-analysis-in-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Market Basket Analysis</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/mba/mba.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Market Basket Analysis</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/335377" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="customer-segmentation-using-rfm-analysis" data-track="applied" data-search="customer segmentation using rfm analysis in this course, students will learn to segment customers using recency, frequency and monetary value analysis. students will look at a case study to understand how rfm can be used to segment customers and tailor offers to them. they will understand the difference between transaction level data and customer level data. recency, frequency, monetary value transaction vs customer level data segmenting customers online course youtube video blog: rfm analysis slides: rfm analysis github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/course_card_rfm.webp" alt="Course thumbnail: Customer Segmentation using RFM Analysis" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Applied Analytics<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/customer-segmentation-using-rfm-analysis" target="_blank" rel="noopener noreferrer">Customer Segmentation using RFM Analysis</a></h2>
+              <p class="lout">In this course, students will learn to segment customers using recency, frequency and monetary value analysis. Students will look at a case study to understand how RFM can be used to segment customers and tailor offers to them. They will understand the difference between transaction level data and customer level data.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Recency, frequency, monetary value</li><li>Transaction vs customer level data</li><li>Segmenting customers</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/customer-segmentation-using-rfm-analysis" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=275X7yaSsoQ" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/customer-segmentation-using-rfm-analysis/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: RFM Analysis</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/rfm/rfm.html"><i class="bi-easel" aria-hidden="true"></i><span>Slides: RFM Analysis</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/416146" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="working-with-databases-using-r" data-track="applied" data-search="working with databases using r in this course, you will learn to interact with databases from r. from connecting to different databases from r, using sql script in rstudio and the sql engine in knitr while working with rmarkdown documents to querying, visualizing and modeling data while securely handling database credentials. connecting to databases from r sql in rstudio and knitr querying, visualizing and modeling handling credentials securely online course youtube video blog: working with databases ebook slides: databases &amp; sql github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/course_card_rdbi.webp" alt="Course thumbnail: Working with Databases using R" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Applied Analytics<span class="lpill int">Intermediate</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/working-with-databases-using-r" target="_blank" rel="noopener noreferrer">Working with Databases using R</a></h2>
+              <p class="lout">In this course, you will learn to interact with databases from R. From connecting to different databases from R, using SQL script in RStudio and the SQL engine in knitr while working with RMarkdown documents to querying, visualizing and modeling data while securely handling database credentials.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Connecting to databases from R</li><li>SQL in RStudio and knitr</li><li>Querying, visualizing and modeling</li><li>Handling credentials securely</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/working-with-databases-using-r" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=bPlGPmjPFeU" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/working-with-databases-using-r/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Working with Databases</span></a>
+              <a class="labtn" href="https://rdbsql.rsquaredacademy.com/"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/sql/sqlite.html#/section"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Databases &amp; SQL</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/430439" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+          <article class="lcard course-card" id="command-line-basics" data-track="tooling" data-search="command line basics in this course, you will be introduced to shell commands. our goal was to ensure that after completing this tutorial, readers should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in r and rmarkdown and execute r scripts in the shell. shell fundamentals version control and cloud services running r and r scripts from the shell online course youtube video blog: command line basics ebook slides: shell (pdf) github rstudio cloud lab">
+            <img class="lcover" src="/assets/images/course_card_cline.webp" alt="Course thumbnail: Command Line Basics" width="480" height="270" loading="lazy" decoding="async">
+            <div class="lbody">
+              <p class="ltrack">Tooling<span class="lpill beg">Beginner</span></p>
+              <h2><a href="https://rsquared-academy.thinkific.com/courses/command-line-basics-for-r-users" target="_blank" rel="noopener noreferrer">Command Line Basics</a></h2>
+              <p class="lout">In this course, you will be introduced to shell commands. Our goal was to ensure that after completing this tutorial, readers should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R and RMarkdown and execute R scripts in the shell.</p>
+              <details><summary>What&rsquo;s inside</summary><ul><li>Shell fundamentals</li><li>Version control and cloud services</li><li>Running R and R scripts from the shell</li></ul></details>
+              <p class="lactions">
+              <a class="labtn primary" href="https://rsquared-academy.thinkific.com/courses/command-line-basics-for-r-users" target="_blank" rel="noopener noreferrer"><i class="bi-book" aria-hidden="true"></i><span>Online course</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://www.youtube.com/watch?v=62hgg26RCC0&amp;list=PLDfCKV3ey8-cJpfx1fakjr039hK1vqtUP" target="_blank" rel="noopener noreferrer"><i class="bi-play-btn" aria-hidden="true"></i><span>YouTube video</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://blog.rsquaredacademy.com/command-line-basics-for-r-users/"><i class="bi-file-earmark-text" aria-hidden="true"></i><span>Blog: Command Line Basics</span></a>
+              <a class="labtn" href="https://bash-intro.rsquaredacademy.com/"><i class="bi-journal-richtext" aria-hidden="true"></i><span>eBook</span></a>
+              <a class="labtn" href="https://slides.rsquaredacademy.com/github/shell.pdf"><i class="bi-easel" aria-hidden="true"></i><span>Slides: Shell (PDF)</span></a>
+              <a class="labtn" href="https://github.com/rsquaredacademy-education/online-courses/" target="_blank" rel="noopener noreferrer"><i class="bi-github" aria-hidden="true"></i><span>GitHub</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              <a class="labtn" href="https://rstudio.cloud/project/518720" target="_blank" rel="noopener noreferrer"><i class="bi-cloud" aria-hidden="true"></i><span>RStudio Cloud lab</span><i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
+              </p>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="ebooks-title">
+      <h2 id="ebooks-title">Books behind the courses</h2>
+      <p>Every course draws from one of six open-access textbooks, free to read online and downloadable as PDF or ePub.</p>
+      <div class="lshelf">
+        <a class="lshelf-item ext" href="https://intro-r.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 01</span>
+          <span class="shelf-name">Introduction to R</span>
+          <span class="shelf-sub">13 chapters</span>
+        </a>
+        <a class="lshelf-item ext" href="https://wrangle-r.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 02</span>
+          <span class="shelf-name">Data Wrangling with R</span>
+          <span class="shelf-sub">13 chapters</span>
+        </a>
+        <a class="lshelf-item ext" href="https://viz-ggplot2.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 03</span>
+          <span class="shelf-name">Data Visualization with ggplot2</span>
+          <span class="shelf-sub">22 chapters</span>
+        </a>
+        <a class="lshelf-item ext" href="https://rdbsql.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 04</span>
+          <span class="shelf-name">R, Databases and SQL</span>
+          <span class="shelf-sub">5 chapters</span>
+        </a>
+        <a class="lshelf-item ext" href="https://bash-intro.rsquaredacademy.com/">
+          <span class="shelf-num">COMPANION A</span>
+          <span class="shelf-name">Command Line Basics</span>
+          <span class="shelf-sub">12 chapters</span>
+        </a>
+        <a class="lshelf-item ext" href="https://viz-base.rsquaredacademy.com/">
+          <span class="shelf-num">COMPANION B</span>
+          <span class="shelf-name">Data Visualization with Base R</span>
+          <span class="shelf-sub">12 chapters</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Feedback</h2>
+      <p>Spotted a mistake, a broken link, or a topic you would like covered next? Everything here is maintained by hand, so a note from you genuinely helps.</p>
+      <p class="cta-row">
+        <a class="btn btn-primary" href="mailto:support@rsquaredacademy.com">
+          <i class="bi bi-envelope" aria-hidden="true"></i>Email the team
+        </a>
+        <a class="btn" href="https://github.com/rsquaredacademy-education/online-courses/issues" ext" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-github" aria-hidden="true"></i>Open an issue
+        </a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2014&ndash;2026 Rsquared Academy &middot; Open Courses</p>
+      <p>Designed, developed and maintained by Aravind Hebbali &middot; Bengaluru, India</p>
+      <div class="footer-links">
+        <a href="https://www.rsquaredacademy.com/">Rsquared Academy</a>
+        <a href="https://pkgs.rsquaredacademy.com/">R Packages</a>
+        <a href="https://ebooks.rsquaredacademy.com/">e-books</a>
+        <a href="https://apps.rsquaredacademy.com/">Shiny Apps</a>
+        <a href="https://blog.rsquaredacademy.com/">Blog</a>
+      </div>
+      <div class="footer-icons">
+        <a class="icon-link" href="mailto:support@rsquaredacademy.com" aria-label="Email support">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/rsquaredacademy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/company/rsquared-academy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on LinkedIn">
+          <i class="bi bi-linkedin" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://www.youtube.com/user/rsquaredin/" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on YouTube">
+          <i class="bi bi-play-btn" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://blog.rsquaredacademy.com/" aria-label="Rsquared Academy blog">
+          <i class="bi bi-rss" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="consent" id="consent-banner" role="region" aria-label="Cookie consent" tabindex="-1">
+    <p class="consent-text">This site uses Google Analytics to count visits. Nothing is sent to Google until you choose. Choosing &ldquo;essential only&rdquo; still allows cookieless measurement; choosing &ldquo;accept&rdquo; also allows cookies and audience features.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="consent-deny">Essential only</button>
+      <button type="button" class="consent-btn consent-btn-primary" id="consent-accept">Accept</button>
+    </div>
+  </aside>
+
+  <script src="/assets/js/main.js" defer></script>
 </body>
 
 </html>
