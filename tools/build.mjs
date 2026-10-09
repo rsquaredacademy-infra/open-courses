@@ -132,9 +132,7 @@ function renderTracks(courses) {
     .filter(([key]) => counts[key])
     .map(
       ([key, name]) =>
-        `<button type="button" class="chip" data-filter="${key}" aria-pressed="${
-          key === "foundations" ? "true" : "false"
-        }">${esc(name)} (${counts[key]})</button>`
+        `<button type="button" class="chip" data-filter="${key}" aria-pressed="false">${esc(name)} (${counts[key]})</button>`
     )
     .join("\n          ");
 }
