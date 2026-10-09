@@ -1,0 +1,171 @@
+/* Design tokens ported from the Rsquared Academy site family
+   (aravindhebbali.com / pkgs / ebooks) for a consistent cross-site look. */
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/source-sans-pro-latin-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/source-sans-pro-latin-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --ink: #0f172a;
+  --body: #334155;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --line-soft: #f1f5f9;
+  --line-strong: #cbd5e1;
+  --accent: #2563eb;
+  --accent-dk: #1d4ed8;
+  --accent-ring: rgba(37, 99, 235, 0.28);
+  --surface: #ffffff;
+  --canvas: #fbfcfd;
+
+  --note-bg: #f0f9ff;
+  --note-line: #e0f2fe;
+  --note-ink: #075985;
+
+  --beg-bg: #dcfce7;
+  --beg-ink: #166534;
+  --int-bg: #fef9c3;
+  --int-ink: #854d0e;
+  --adv-bg: #fee2e2;
+  --adv-ink: #991b1b;
+
+  --on-accent: #ffffff;
+  --on-ink: #ffffff;
+  --ink-hover: #1e293b;
+  --shadow-xs: rgba(2, 6, 23, 0.04);
+  --shadow-sm: rgba(2, 6, 23, 0.08);
+  --shadow-md: rgba(2, 6, 23, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #0f172a;
+    --canvas: #020617;
+    --ink: #f8fafc;
+    --body: #e2e8f0;
+    --muted: #a8b6c8;
+    --line: #24334a;
+    --line-soft: #182338;
+    --line-strong: #3d4d66;
+    --accent: #7cc0ff;
+    --accent-dk: #a8d3ff;
+    --accent-ring: rgba(124, 192, 255, 0.34);
+    --on-ink: #0f172a;
+    --ink-hover: #e2e8f0;
+    --note-bg: #0c2436;
+    --note-ink: #8fdcff;
+    --note-line: #123a52;
+    --beg-bg: #053021;
+    --beg-ink: #8ef0b0;
+    --int-bg: #2c2609;
+    --int-ink: #ffe14d;
+    --adv-bg: #331318;
+    --adv-ink: #ffb3b3;
+    --shadow-xs: rgba(2, 6, 23, 0.30);
+    --shadow-sm: rgba(2, 6, 23, 0.45);
+    --shadow-md: rgba(2, 6, 23, 0.60);
+    --on-accent: #0f172a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --surface: #0f172a;
+  --canvas: #020617;
+  --ink: #f8fafc;
+  --body: #e2e8f0;
+  --muted: #a8b6c8;
+  --line: #24334a;
+  --line-soft: #182338;
+  --line-strong: #3d4d66;
+  --accent: #7cc0ff;
+  --accent-dk: #a8d3ff;
+  --accent-ring: rgba(124, 192, 255, 0.34);
+  --on-ink: #0f172a;
+  --ink-hover: #e2e8f0;
+  --note-bg: #0c2436;
+  --note-ink: #8fdcff;
+  --note-line: #123a52;
+  --beg-bg: #053021;
+  --beg-ink: #8ef0b0;
+  --int-bg: #2c2609;
+  --int-ink: #ffe14d;
+  --adv-bg: #331318;
+  --adv-ink: #ffb3b3;
+  --shadow-xs: rgba(2, 6, 23, 0.30);
+  --shadow-sm: rgba(2, 6, 23, 0.45);
+  --shadow-md: rgba(2, 6, 23, 0.60);
+  --on-accent: #0f172a;
+}
+
+/* ---------- Base ---------- */
+
+body {
+  color: var(--body);
+  background: var(--canvas);
+  text-align: left;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.011em;
+  text-align: left;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; }
+h2 { font-size: 1.5rem; margin-top: 3.5rem; margin-bottom: 1.25rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.125rem; margin-top: 2rem; margin-bottom: 0.6rem; }
+
+p { margin-bottom: 1.1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-ring);
+}
+
+a:hover { color: var(--accent-dk); border-bottom-color: var(--accent-dk); }
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+main p, main li { max-width: 68ch; }
+
+main ul, main ol { padding-left: 1.25rem; }
+main li { margin-bottom: 0.35rem; }
+
+code {
+  color: var(--ink);
+  background: var(--line-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.875em;
+}
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
