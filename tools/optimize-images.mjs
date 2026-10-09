@@ -54,9 +54,11 @@ function thumbs() {
       continue;
     }
     const out = join(ASSETS, webp);
+    // Force an exact 16:9 crop so intrinsic size always matches the
+    // width/height attributes rendered into the card markup.
     ffmpeg(
       "-i", src,
-      "-vf", `scale=if(gte(iw\\,${THUMB_W})\\,${THUMB_W}\\,iw):-2:flags=lanczos`,
+      "-vf", "scale=480:270:force_original_aspect_ratio=increase:flags=lanczos,crop=480:270",
       "-c:v", "libwebp",
       "-quality", String(QUALITY),
       out

@@ -154,7 +154,10 @@
   margin: 0 0 0.5rem;
 }
 
-@media (max-width: 575.98px) { .hero .hero-art { display: none; } }
+@media (max-width: 575.98px) {
+  .hero .hero-art { flex: 1 1 100%; text-align: center; margin-top: 1rem; }
+  .hero .hero-art img { max-width: 200px; }
+}
 
 .hero h1 { margin: 0.2rem 0 0.35rem; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.022em; }
 .hero .lead { color: var(--muted); font-size: 1.15rem; margin: 0 0 1rem; max-width: 60ch; }
