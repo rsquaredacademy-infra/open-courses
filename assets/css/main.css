@@ -139,11 +139,26 @@
 
 .hero { padding: 3.25rem 0 0; }
 
+.hero-grid { display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; }
+.hero-copy { flex: 1 1 24rem; min-width: 0; }
+.hero .hero-art { flex: 0 0 260px; text-align: center; }
+.hero .hero-art img { max-width: 260px; width: 100%; height: auto; }
+
+.kicker {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+@media (max-width: 575.98px) { .hero .hero-art { display: none; } }
+
 .hero h1 { margin: 0.2rem 0 0.35rem; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.022em; }
 .hero .lead { color: var(--muted); font-size: 1.15rem; margin: 0 0 1rem; max-width: 60ch; }
 .hero .hero-desc { max-width: 68ch; }
-.hero .hero-art { text-align: center; }
-.hero .hero-art img { max-width: 300px; width: 100%; height: auto; }
 
 /* Stat strip */
 
@@ -382,7 +397,7 @@ a .bi-box-arrow-up-right { font-size: 0.85em; opacity: 0.75; }
 
 /* ---------- Shelf ---------- */
 
-.lshelf { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 1rem 0 2rem; }
+.lshelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1rem 0 2rem; }
 @media (max-width: 575.98px) { .lshelf { grid-template-columns: repeat(2, 1fr); } }
 
 .lshelf-item { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem; text-align: center; }

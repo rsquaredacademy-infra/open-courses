@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Open Courses for Learning R | Rsquared Academy</title>
+  <meta name="description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <link rel="canonical" href="https://courses.rsquaredacademy.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Rsquared Academy">
+  <meta property="og:title" content="Open Courses for Learning R | Rsquared Academy">
+  <meta property="og:description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <meta property="og:url" content="https://courses.rsquaredacademy.com/">
+  <meta property="og:image" content="https://courses.rsquaredacademy.com/assets/images/og-card.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rsquared Academy open courses">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rsquaredacademy">
+  <meta name="twitter:title" content="Open Courses for Learning R | Rsquared Academy">
+  <meta name="twitter:description" content="Free, self-paced R courses from Rsquared Academy - videos, guides, ebooks, slides and code. No sign-up required.">
+  <meta name="twitter:image" content="https://courses.rsquaredacademy.com/assets/images/og-card.jpg">
+  <meta name="twitter:image:alt" content="Rsquared Academy open courses">
+
+  <meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/assets/fonts/source-sans-pro-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-sans-pro-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/icons.css" rel="stylesheet">
+  <link href="/assets/css/tokens.css" rel="stylesheet">
+  <link href="/assets/css/main.css" rel="stylesheet">
+
+  <!-- Theme resolver: must run before first paint so a dark-preference
+       visitor never sees a white flash. The toggle handler itself lives in
+       main.js. Stored values are whitelisted before reaching the attribute. -->
+  <script>
+    (function () {
+      var KEY = "theme";
+      var VALID = ["light", "dark"];
+      function stored() {
+        try {
+          var v = window.localStorage.getItem(KEY);
+          return VALID.indexOf(v) !== -1 ? v : null;
+        } catch (e) { return null; }
+      }
+      var root = document.documentElement;
+      var choice = stored();
+      if (!choice) {
+        choice = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      root.setAttribute("data-theme", choice);
+      root.style.colorScheme = choice;
+    })();
+  </script>
+
+  <!-- TODO(replace): set the GA4 measurement ID for courses.rsquaredacademy.com
+       (placeholder below is NOT a live property). Nothing reaches Google until
+       the visitor chooses; without a choice the banner stays and no tag loads. -->
+  <script>
+    (function () {
+      "use strict";
+      var MEASUREMENT_ID = "G-XXXXXXXXXX";
+      var STORAGE_KEY = "ga-consent";
+      var DENIED = {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted"
+      };
+      function readChoice() {
+        try {
+          var v = window.localStorage.getItem(STORAGE_KEY);
+          return v === "granted" || v === "denied" ? v : null;
+        } catch (e) { return null; }
+      }
+      function writeChoice(v) {
+        try { window.localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode */ }
+      }
+      var loaded = false;
+      function loadGA4(choice) {
+        if (loaded || MEASUREMENT_ID === "G-XXXXXXXXXX") return;
+        loaded = true;
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = window.gtag || gtag;
+        gtag("consent", "default", DENIED);
+        if (choice === "granted") {
+          gtag("consent", "update", {
+            ad_storage: "granted",
+            ad_user_data: "granted",
+            ad_personalization: "granted",
+            analytics_storage: "granted",
+            functionality_storage: "granted",
+            personalization_storage: "granted"
+          });
+        }
+        gtag("js", new Date());
+        gtag("config", MEASUREMENT_ID);
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + MEASUREMENT_ID;
+        document.head.appendChild(s);
+      }
+      function hideBanner() {
+        var el = document.getElementById("consent-banner");
+        if (el) el.remove();
+      }
+      function decide(choice) {
+        writeChoice(choice);
+        hideBanner();
+        loadGA4(choice);
+      }
+      function init() {
+        var existing = readChoice();
+        if (existing) { hideBanner(); loadGA4(existing); return; }
+        var banner = document.getElementById("consent-banner");
+        if (!banner) return;
+        var accept = document.getElementById("consent-accept");
+        var deny = document.getElementById("consent-deny");
+        if (accept) accept.addEventListener("click", function () { decide("granted"); });
+        if (deny) deny.addEventListener("click", function () { decide("denied"); });
+        banner.focus();
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+
+  {{JSON_LD}}
+  <!-- Built {{BUILD_DATE}} from data/courses.json by tools/build.mjs - do not edit directly -->
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="navbar-brand" href="https://www.rsquaredacademy.com/">Rsquared Academy</a>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+      </button>
+
+      <nav class="main-nav collapse" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/" aria-current="page">Courses</a></li>
+          <li><a href="https://pkgs.rsquaredacademy.com/">R Packages</a></li>
+          <li><a href="https://apps.rsquaredacademy.com/">Shiny Apps</a></li>
+          <li><a href="https://ebooks.rsquaredacademy.com/">e-books</a></li>
+          <li><a href="https://www.rsquaredacademy.com/">Teaching</a></li>
+          <li><a href="https://blog.rsquaredacademy.com/">Blog</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-link" href="https://github.com/rsquaredacademy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="theme-toggle" aria-label="Switch colour theme">
+          <i class="bi bi-moon-fill theme-icon-dark" aria-hidden="true"></i>
+          <i class="bi bi-sun-fill theme-icon-light" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="row hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Rsquared Academy &middot; Open Courses</p>
+          <h1 id="hero-title">Open Courses</h1>
+          <p class="lead">Free, self-paced R courses &mdash; no sign-up, no platform, just the contents.</p>
+          <p class="hero-desc">Welcome to Rsquared Academy open courses. Here you&rsquo;ll find the complete content of all our self-paced courses: videos, guides, e-book chapters, slides and code. We built this for everyone who would rather not sign up on a platform to access course material. Feedback is always welcome &mdash; reach out at
+            <a href="mailto:support@rsquaredacademy.com">support@rsquaredacademy.com</a>.</p>
+          <ul class="stats">
+            <li><strong>{{COURSE_COUNT}}</strong> courses</li>
+            <li><strong>{{TRACK_COUNT}}</strong> tracks</li>
+            <li>Beginner &rarr; Advanced</li>
+            <li>Free &amp; open</li>
+            <li>No sign-up</li>
+          </ul>
+          <p class="cta-row">
+            <a class="btn btn-primary" href="https://rsquared-academy.thinkific.com/courses/introduction-to-r" target="_blank" rel="noopener noreferrer">
+              <i class="bi bi-book" aria-hidden="true"></i>Start with Intro to R
+            </a>
+            <a class="btn" href="#courses">
+              Browse courses <i class="bi bi-caret-down-fill" aria-hidden="true"></i>
+            </a>
+          </p>
+        </div>
+        <div class="hero-art">
+          <img src="/assets/images/hex_stickers.png" alt="Hex stickers of Rsquared Academy R packages" width="280" height="280" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="path-title">
+      <h2 id="path-title">Learning path</h2>
+      <p>Follow the tracks in order, or jump in wherever your current project needs. Each card below links to every format of that course.</p>
+      <div class="lpath">
+        <div class="lstep">
+          <span class="num">01</span>
+          <h3>Foundations</h3>
+          <p>The R ecosystem and IDE, then importing flat files and Excel workbooks.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">02</span>
+          <h3>Wrangling</h3>
+          <p>dplyr in three parts, tibbles, pipes and date &amp; time handling.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">03</span>
+          <h3>Text &amp; Web</h3>
+          <p>Regular expressions first, then put them to work scraping the web.</p>
+        </div>
+        <div class="lstep">
+          <span class="num">04</span>
+          <h3>Applied Analytics</h3>
+          <p>RFM segmentation, market basket analysis and database workflows.</p>
+        </div>
+      </div>
+      <p class="lshortcut">Comfortable with R already? Jump straight to <a href="#data-wrangling-with-dplyr-part-1">02 Wrangling</a>. Command Line Basics is a companion that pairs well with any track.</p>
+    </section>
+
+    <section id="courses" aria-labelledby="courses-title">
+      <h2 id="courses-title">Courses</h2>
+
+      <div class="filterbar">
+        <div class="chips" role="group" aria-label="Filter courses by track">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All ({{COURSE_COUNT}})</button>
+          {{TRACKS}}
+        </div>
+        <div class="search">
+          <label class="visually-hidden" for="course-search">Search courses</label>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <input type="search" id="course-search" placeholder="Filter by title, topic or chapter&hellip;" autocomplete="off">
+        </div>
+      </div>
+
+      <p class="result-count" id="filter-status" role="status" aria-live="polite"></p>
+      <p id="no-results" hidden>No courses match your filter. Try clearing the search box or selecting All.</p>
+
+      <div class="lgrid">
+          {{COURSE_CARDS}}
+      </div>
+    </section>
+
+    <section aria-labelledby="ebooks-title">
+      <h2 id="ebooks-title">Books behind the courses</h2>
+      <p>Every course draws from one of six open-access textbooks, free to read online and downloadable as PDF or ePub.</p>
+      <div class="lshelf">
+        <a class="lshelf-item" href="https://intro-r.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 01</span>
+          <span class="shelf-name">Introduction to R</span>
+          <span class="shelf-sub">13 chapters</span>
+        </a>
+        <a class="lshelf-item" href="https://wrangle-r.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 02</span>
+          <span class="shelf-name">Data Wrangling with R</span>
+          <span class="shelf-sub">13 chapters</span>
+        </a>
+        <a class="lshelf-item" href="https://viz-ggplot2.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 03</span>
+          <span class="shelf-name">Data Visualization with ggplot2</span>
+          <span class="shelf-sub">22 chapters</span>
+        </a>
+        <a class="lshelf-item" href="https://rdbsql.rsquaredacademy.com/">
+          <span class="shelf-num">CORE 04</span>
+          <span class="shelf-name">R, Databases and SQL</span>
+          <span class="shelf-sub">5 chapters</span>
+        </a>
+        <a class="lshelf-item" href="https://bash-intro.rsquaredacademy.com/">
+          <span class="shelf-num">COMPANION A</span>
+          <span class="shelf-name">Command Line Basics</span>
+          <span class="shelf-sub">12 chapters</span>
+        </a>
+        <a class="lshelf-item" href="https://viz-base.rsquaredacademy.com/">
+          <span class="shelf-num">COMPANION B</span>
+          <span class="shelf-name">Data Visualization with Base R</span>
+          <span class="shelf-sub">12 chapters</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Feedback</h2>
+      <p>Spotted a mistake, a broken link, or a topic you would like covered next? Everything here is maintained by hand, so a note from you genuinely helps.</p>
+      <p class="cta-row">
+        <a class="btn btn-primary" href="mailto:support@rsquaredacademy.com">
+          <i class="bi bi-envelope" aria-hidden="true"></i>Email the team
+        </a>
+        <a class="btn" href="https://github.com/rsquaredacademy-education/online-courses/issues" target="_blank" rel="noopener noreferrer">
+          <i class="bi bi-github" aria-hidden="true"></i>Open an issue
+        </a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>&copy; 2014&ndash;{{BUILD_YEAR}} Rsquared Academy &middot; Open Courses</p>
+      <p>Designed, developed and maintained by Aravind Hebbali &middot; Bengaluru, India</p>
+      <div class="footer-links">
+        <a href="https://www.rsquaredacademy.com/">Rsquared Academy</a>
+        <a href="https://pkgs.rsquaredacademy.com/">R Packages</a>
+        <a href="https://ebooks.rsquaredacademy.com/">e-books</a>
+        <a href="https://apps.rsquaredacademy.com/">Shiny Apps</a>
+        <a href="https://blog.rsquaredacademy.com/">Blog</a>
+      </div>
+      <div class="footer-icons">
+        <a class="icon-link" href="mailto:support@rsquaredacademy.com" aria-label="Email support">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/rsquaredacademy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/company/rsquared-academy" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on LinkedIn">
+          <i class="bi bi-linkedin" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://www.youtube.com/user/rsquaredin/" target="_blank" rel="noopener noreferrer" aria-label="Rsquared Academy on YouTube">
+          <i class="bi bi-play-btn" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="https://blog.rsquaredacademy.com/" aria-label="Rsquared Academy blog">
+          <i class="bi bi-rss" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="consent" id="consent-banner" role="region" aria-label="Cookie consent" tabindex="-1">
+    <p class="consent-text">This site uses Google Analytics to count visits. Nothing is sent to Google until you choose. Choosing &ldquo;essential only&rdquo; still allows cookieless measurement; choosing &ldquo;accept&rdquo; also allows cookies and audience features.</p>
+    <div class="consent-actions">
+      <button type="button" class="consent-btn" id="consent-deny">Essential only</button>
+      <button type="button" class="consent-btn consent-btn-primary" id="consent-accept">Accept</button>
+    </div>
+  </aside>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+
+</html>
