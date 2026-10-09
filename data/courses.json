@@ -1,0 +1,340 @@
+{
+  "$comment": "Single source of truth for the 15 open courses. tools/build.mjs renders index.html from this file. Link types: course, video, guide, ebook, slides, code, lab. Links with no entry are omitted for that course (see web scraping / market basket / regular expressions).",
+  "courses": [
+    {
+      "slug": "introduction-to-r",
+      "title": "Introduction to R",
+      "track": "foundations",
+      "level": "beg",
+      "blurb": "In this introductory course, you will learn about R and its ecosystem. You will learn about the evolution of R, its current capabilities and the organizations working for the development of R. You will be introduced to RStudio, a very popular IDE, the R community, and tidyverse, a collection of R packages designed for data science.",
+      "topics": [
+        "R ecosystem and its evolution",
+        "RStudio, the popular IDE for R",
+        "The R community",
+        "tidyverse overview"
+      ],
+      "image": "/assets/images/course_card_intro_r.webp",
+      "imageAlt": "Course thumbnail: Introduction to R",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/introduction-to-r" },
+        { "type": "video", "label": "YouTube playlist", "href": "https://www.youtube.com/playlist?list=PLDfCKV3ey8-eiu-_PK65TsTNQR6_a5hpb" },
+        { "type": "guide", "label": "Blog: Variables in R", "href": "https://blog.rsquaredacademy.com/variables-in-r/" },
+        { "type": "guide", "label": "Blog: Data Types in R", "href": "https://blog.rsquaredacademy.com/data-types-in-r/" },
+        { "type": "guide", "label": "Blog: Getting Help in R", "href": "https://blog.rsquaredacademy.com/getting-help-in-r-updated/" },
+        { "type": "guide", "label": "Blog: R Package Ecosystem", "href": "https://blog.rsquaredacademy.com/beginners-guide-to-r-package-ecosystem/" },
+        { "type": "ebook", "label": "eBook", "href": "https://intro-r.rsquaredacademy.com/" },
+        { "type": "slides", "label": "Slides: Introduction", "href": "https://slides.rsquaredacademy.com/intro/intro.html" },
+        { "type": "slides", "label": "Slides: Getting Help", "href": "https://slides.rsquaredacademy.com/intro/help/help.html" },
+        { "type": "slides", "label": "Slides: Packages", "href": "https://slides.rsquaredacademy.com/intro/packages/packages.html" },
+        { "type": "slides", "label": "Slides: Variables", "href": "https://slides.rsquaredacademy.com/intro/variables/variables.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "import-data-into-r",
+      "title": "Import Data into R",
+      "track": "foundations",
+      "level": "beg",
+      "blurb": "Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read data into R from different sources and in multiple formats. You will examine the challenges in reading data and use appropriate methods to address them.",
+      "topics": [
+        "Reading data from different sources",
+        "Multiple data formats",
+        "Common import challenges and fixes"
+      ],
+      "image": "/assets/images/course_card_import.webp",
+      "imageAlt": "Course thumbnail: Import Data into R",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-1" },
+        { "type": "video", "label": "YouTube playlist", "href": "https://www.youtube.com/playlist?list=PLDfCKV3ey8-crIKICpBY2DrsLQo1V0fwd" },
+        { "type": "guide", "label": "Blog: Import Data into R", "href": "https://blog.rsquaredacademy.com/import-data-into-r-part-1/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/import1.html" },
+        { "type": "slides", "label": "Slides: Import Data Part 1", "href": "https://slides.rsquaredacademy.com/data-wrangling/import/import-part-1.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "import-excel-data-into-r",
+      "title": "Import Excel Data into R",
+      "track": "foundations",
+      "level": "beg",
+      "blurb": "Importing or reading data is one of the most basic and crucial stages of data analysis. In this introductory course, you will learn to read Excel data into R. You will examine the challenges in reading Excel data and use appropriate methods to address them.",
+      "topics": [
+        "Reading Excel workbooks",
+        "Sheet and range handling",
+        "Common Excel import challenges and fixes"
+      ],
+      "image": "/assets/images/course_card_import_excel.webp",
+      "imageAlt": "Course thumbnail: Import Excel Data into R",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/import-data-into-R-part-2" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=-Iqnh4e_-qY&list=PLDfCKV3ey8-ebirC_g7aKWFKUyNw1dsno" },
+        { "type": "guide", "label": "Blog: Import Excel Data into R", "href": "https://blog.rsquaredacademy.com/import-data-into-r-part-2/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/import2.html" },
+        { "type": "slides", "label": "Slides: Import Data Part 2", "href": "https://slides.rsquaredacademy.com/data-wrangling/import/import-data.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "data-wrangling-with-dplyr-part-1",
+      "title": "Data Wrangling with dplyr - Part I",
+      "track": "wrangling",
+      "level": "beg",
+      "blurb": "In this course, you will master techniques for data manipulation using the dplyr package. You will learn to filter, select, sort, mutate and summarize data. You will learn to join tables, make your code readable using pipes and use tibbles instead of data frames.",
+      "topics": [
+        "filter and select",
+        "arrange and mutate",
+        "summarise and group_by"
+      ],
+      "image": "/assets/images/course_card_dplyr_part_1.webp",
+      "imageAlt": "Course thumbnail: Data Wrangling with dplyr Part I",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-1" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=LLTpn9QBni4&list=PLDfCKV3ey8-eo7wMZ07DtxCcoR5edxhnl" },
+        { "type": "guide", "label": "Blog: Data Wrangling Part 1", "href": "https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-1/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/dplyr1.html" },
+        { "type": "slides", "label": "Slides: dplyr Part 1", "href": "https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-1.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "data-wrangling-with-dplyr-part-2",
+      "title": "Data Wrangling with dplyr - Part II",
+      "track": "wrangling",
+      "level": "int",
+      "blurb": "In this course, you will learn to join tables using dplyr's two table verbs. Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. You will learn the best ways to combine split data sets to create single tables for your data analysis pipeline.",
+      "topics": [
+        "dplyr's two-table verbs",
+        "Join types in practice",
+        "Combining split data sets"
+      ],
+      "image": "/assets/images/course_card_dplyr_part_2.webp",
+      "imageAlt": "Course thumbnail: Data Wrangling with dplyr Part II",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-2" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=gS7pi2Vwj7w&list=PLDfCKV3ey8-eEh3NRVkYO61--zU5Fhswc" },
+        { "type": "guide", "label": "Blog: Data Wrangling Part 2", "href": "https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-2/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/dplyr2.html" },
+        { "type": "slides", "label": "Slides: dplyr Part 2", "href": "https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-2.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "data-wrangling-with-dplyr-part-3",
+      "title": "Data Wrangling with dplyr - Part III",
+      "track": "wrangling",
+      "level": "int",
+      "blurb": "Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. As such reshaping data is an invaluable skill set for a data scientist. In this course, you will master sophisticated techniques for data manipulation using the dplyr package.",
+      "topics": [
+        "Reshaping data",
+        "Advanced manipulation techniques",
+        "Sophisticated dplyr workflows"
+      ],
+      "image": "/assets/images/course_card_dplyr_part_3.webp",
+      "imageAlt": "Course thumbnail: Data Wrangling with dplyr Part III",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/data-wrangling-with-dplyr-part-3" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=xg5L2cxNV4o&list=PLDfCKV3ey8-ePKsS11y5uAXpnydpzOD2n" },
+        { "type": "guide", "label": "Blog: Data Wrangling Part 3", "href": "https://blog.rsquaredacademy.com/data-wrangling-with-dplyr-part-3/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/dplyr3.html" },
+        { "type": "slides", "label": "Slides: dplyr Part 3", "href": "https://slides.rsquaredacademy.com/data-wrangling/dplyr/dplyr-part-3.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "introduction-to-tibbles",
+      "title": "Introduction to tibbles",
+      "track": "wrangling",
+      "level": "beg",
+      "blurb": "Data does not come in the structure or shape in which we need it for analysis and a lot of time is spent in getting the data into shape. In this course, you will learn about tibbles, an alternative for data frames.",
+      "topics": [
+        "tibbles vs data frames",
+        "Creating tibbles",
+        "Subsetting tibbles"
+      ],
+      "image": "/assets/images/course_card_tibbles.webp",
+      "imageAlt": "Course thumbnail: Introduction to tibbles",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/introduction-to-tibbles" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=yUu8yK_NEZs&list=PLDfCKV3ey8-frtlRpGGqA8-2f086SyR7x" },
+        { "type": "guide", "label": "Blog: Introduction to tibbles", "href": "https://blog.rsquaredacademy.com/introduction-to-tibbles/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/tibbles.html" },
+        { "type": "slides", "label": "Slides: tibbles", "href": "https://slides.rsquaredacademy.com/data-wrangling/tibbles/tibbles.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "readable-code-with-pipes",
+      "title": "Readable Code with Pipes",
+      "track": "wrangling",
+      "level": "beg",
+      "blurb": "R code contains a lot of parentheses in case of a sequence of multiple operations. When you are dealing with complex code, it results in nested function calls which are hard to read and maintain. The magrittr package by Stefan Milton Bache provides pipes enabling us to write R code that is readable.",
+      "topics": [
+        "The magrittr pipe operator",
+        "Rewriting nested calls",
+        "Readable code sequences"
+      ],
+      "image": "/assets/images/course_card_pipes.webp",
+      "imageAlt": "Course thumbnail: Readable Code with Pipes",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/readable-code-with-pipes" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=8uWzrQDtaHk&list=PLDfCKV3ey8-cZgy2Qu7FxuA3Pzdv6-35o" },
+        { "type": "guide", "label": "Blog: Readable Code with Pipes", "href": "https://blog.rsquaredacademy.com/readable-code-with-pipes/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/pipes.html" },
+        { "type": "slides", "label": "Slides: pipes", "href": "https://slides.rsquaredacademy.com/data-wrangling/pipes/pipes.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "handling-date-and-time-in-r",
+      "title": "Handling Date & Time in R",
+      "track": "wrangling",
+      "level": "int",
+      "blurb": "This course is designed to give you a comprehensive introduction to handling date and time data in R. If you are someone who deals with data, you would know that date/time come in all possible weird formats. As such, it is important to know how to parse, manipulate and compute with date and time.",
+      "topics": [
+        "Parsing date and time values",
+        "Components and arithmetic",
+        "Time zones with lubridate"
+      ],
+      "image": "/assets/images/handling-date-and-time-in-r.webp",
+      "imageAlt": "Course thumbnail: Handling Date & Time in R",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/handling-date-and-time-in-R" },
+        { "type": "video", "label": "YouTube playlist", "href": "https://www.youtube.com/playlist?list=PLDfCKV3ey8-d6pEkC7z7jeqci1rsDqQPm" },
+        { "type": "guide", "label": "Blog: Handling Date & Time in R", "href": "https://blog.rsquaredacademy.com/handling-date-and-time-in-r/" },
+        { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/lubridate.html" },
+        { "type": "slides", "label": "Slides: Date & Time", "href": "https://slides.rsquaredacademy.com/data-wrangling/lubridate/datetime.html#/" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/1072419" }
+      ]
+    },
+    {
+      "slug": "regular-expressions-in-r",
+      "title": "Regular Expressions in R",
+      "track": "text-web",
+      "level": "int",
+      "blurb": "In this course, we will learn about using regular expressions in R. While it is aimed at absolute beginners, we hope experienced users will find it useful as well. The post is broadly divided into three sections. In the first section, we will introduce the pattern matching functions such as grep, grepl etc. as we will be using them in the rest of the post.",
+      "topics": [
+        "Pattern matching syntax",
+        "grep and grepl family of functions",
+        "Substitution and extraction"
+      ],
+      "image": "/assets/images/course_card_regex.webp",
+      "imageAlt": "Course thumbnail: Regular Expressions in R",
+      "links": [
+        { "type": "guide", "label": "Blog: Regular Expressions in R", "href": "https://blog.rsquaredacademy.com/regular-expression-in-r/" },
+        { "type": "slides", "label": "Slides: Regular Expressions", "href": "https://slides.rsquaredacademy.com/regex/regex.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/356612" }
+      ]
+    },
+    {
+      "slug": "webscraping-in-r",
+      "title": "Practical Introduction to Webscraping in R",
+      "track": "text-web",
+      "level": "adv",
+      "blurb": "Are you trying to compare prices of products across websites? Are you trying to monitor price changes every hour? Or planning to do some text mining or sentiment analysis on reviews of products or services? If yes, how would you do that? In this course, we will learn about web scraping using R.",
+      "topics": [
+        "How web scraping works",
+        "Extracting data from web pages",
+        "Text mining and sentiment analysis uses"
+      ],
+      "image": "/assets/images/course_card_web_scraping.webp",
+      "imageAlt": "Course thumbnail: Practical Introduction to Webscraping in R",
+      "links": [
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=l37n_HDD1qs" },
+        { "type": "guide", "label": "Blog: Web Scraping", "href": "https://blog.rsquaredacademy.com/web-scraping/" },
+        { "type": "slides", "label": "Slides: Web Scraping", "href": "https://slides.rsquaredacademy.com/web-scraping/web-scraping.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" }
+      ]
+    },
+    {
+      "slug": "association-rule-mining-in-r",
+      "title": "Association Rule Mining in R",
+      "track": "applied",
+      "level": "adv",
+      "blurb": "Ever wondered why items are displayed in a particular way in retail/online stores. Why certain items are suggested to you based on what you have added to the cart? Blame it on market basket analysis or association rule mining.",
+      "topics": [
+        "Market basket analysis",
+        "Support, confidence and lift",
+        "Association rules in practice"
+      ],
+      "image": "/assets/images/course_card_mba.webp",
+      "imageAlt": "Course thumbnail: Association Rule Mining in R",
+      "links": [
+        { "type": "guide", "label": "Blog: Market Basket Analysis", "href": "https://blog.rsquaredacademy.com/market-basket-analysis-in-r/" },
+        { "type": "slides", "label": "Slides: Market Basket Analysis", "href": "https://slides.rsquaredacademy.com/mba/mba.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/335377" }
+      ]
+    },
+    {
+      "slug": "customer-segmentation-using-rfm-analysis",
+      "title": "Customer Segmentation using RFM Analysis",
+      "track": "applied",
+      "level": "int",
+      "blurb": "In this course, students will learn to segment customers using recency, frequency and monetary value analysis. Students will look at a case study to understand how RFM can be used to segment customers and tailor offers to them. They will understand the difference between transaction level data and customer level data.",
+      "topics": [
+        "Recency, frequency, monetary value",
+        "Transaction vs customer level data",
+        "Segmenting customers"
+      ],
+      "image": "/assets/images/course_card_rfm.webp",
+      "imageAlt": "Course thumbnail: Customer Segmentation using RFM Analysis",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/customer-segmentation-using-rfm-analysis" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=275X7yaSsoQ" },
+        { "type": "guide", "label": "Blog: RFM Analysis", "href": "https://blog.rsquaredacademy.com/customer-segmentation-using-rfm-analysis/" },
+        { "type": "slides", "label": "Slides: RFM Analysis", "href": "https://slides.rsquaredacademy.com/rfm/rfm.html" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/416146" }
+      ]
+    },
+    {
+      "slug": "working-with-databases-using-r",
+      "title": "Working with Databases using R",
+      "track": "applied",
+      "level": "int",
+      "blurb": "In this course, you will learn to interact with databases from R. From connecting to different databases from R, using SQL script in RStudio and the SQL engine in knitr while working with RMarkdown documents to querying, visualizing and modeling data while securely handling database credentials.",
+      "topics": [
+        "Connecting to databases from R",
+        "SQL in RStudio and knitr",
+        "Querying, visualizing and modeling",
+        "Handling credentials securely"
+      ],
+      "image": "/assets/images/course_card_rdbi.webp",
+      "imageAlt": "Course thumbnail: Working with Databases using R",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/working-with-databases-using-r" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=bPlGPmjPFeU" },
+        { "type": "guide", "label": "Blog: Working with Databases", "href": "https://blog.rsquaredacademy.com/working-with-databases-using-r/" },
+        { "type": "ebook", "label": "eBook", "href": "https://rdbsql.rsquaredacademy.com/" },
+        { "type": "slides", "label": "Slides: Databases & SQL", "href": "https://slides.rsquaredacademy.com/sql/sqlite.html#/section" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/430439" }
+      ]
+    },
+    {
+      "slug": "command-line-basics",
+      "title": "Command Line Basics",
+      "track": "tooling",
+      "level": "beg",
+      "blurb": "In this course, you will be introduced to shell commands. Our goal was to ensure that after completing this tutorial, readers should be able to use the shell for version control, managing cloud services (like deploying your own shiny server etc.), execute commands in R and RMarkdown and execute R scripts in the shell.",
+      "topics": [
+        "Shell fundamentals",
+        "Version control and cloud services",
+        "Running R and R scripts from the shell"
+      ],
+      "image": "/assets/images/course_card_cline.webp",
+      "imageAlt": "Course thumbnail: Command Line Basics",
+      "links": [
+        { "type": "course", "label": "Online course", "href": "https://rsquared-academy.thinkific.com/courses/command-line-basics-for-r-users" },
+        { "type": "video", "label": "YouTube video", "href": "https://www.youtube.com/watch?v=62hgg26RCC0&list=PLDfCKV3ey8-cJpfx1fakjr039hK1vqtUP" },
+        { "type": "guide", "label": "Blog: Command Line Basics", "href": "https://blog.rsquaredacademy.com/command-line-basics-for-r-users/" },
+        { "type": "ebook", "label": "eBook", "href": "https://bash-intro.rsquaredacademy.com/" },
+        { "type": "slides", "label": "Slides: Shell (PDF)", "href": "https://slides.rsquaredacademy.com/github/shell.pdf" },
+        { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
+        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/518720" }
+      ]
+    }
+  ]
+}
