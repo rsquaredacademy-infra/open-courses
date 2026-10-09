@@ -215,9 +215,27 @@ function main() {
     throw new Error(`Unreplaced template tokens: ${leftover.join(", ")}`);
   }
 
+  const today = new Date().toISOString().slice(0, 10);
+
   writeFileSync(join(root, "index.html"), out, "utf8");
+
+  writeFileSync(
+    join(root, "robots.txt"),
+    "User-agent: *\nAllow: /\nSitemap: https://courses.rsquaredacademy.com/sitemap.xml\n"
+  );
+
+  writeFileSync(
+    join(root, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      `  <url>\n    <loc>https://courses.rsquaredacademy.com/</loc>\n    <lastmod>${today}</lastmod>\n  </url>\n` +
+      `</urlset>\n`
+  );
+
   const kb = (Buffer.byteLength(out, "utf8") / 1024).toFixed(1);
-  console.log(`Built index.html: ${courses.length} courses, ${kb} KB`);
+  console.log(
+    `Built index.html: ${courses.length} courses, ${kb} KB (+ robots.txt, sitemap.xml)`
+  );
 }
 
 main();
