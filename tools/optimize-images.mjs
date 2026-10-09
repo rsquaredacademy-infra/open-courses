@@ -11,9 +11,10 @@
  * thumbnails is data/courses.json; sources stay in images/.
  */
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync, existsSync, statSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, statSync, rmSync, mkdirSync, copyFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { tmpdir } from "node:os";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = join(root, "assets/images");
@@ -21,10 +22,13 @@ const THUMB_W = 480;
 const QUALITY = 78;
 const BUDGET = 60 * 1024; // roadmap: <60 KB per card
 
-const ffmpeg = (...args) =>
-  execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], {
+const ffmpeg = (...args) => {
+  const opts = typeof args[args.length - 1] === "object" ? args.pop() : {};
+  return execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], {
     stdio: ["ignore", "pipe", "pipe"],
+    ...opts,
   });
+};
 
 const kb = (p) => (existsSync(p) ? Math.round(statSync(p).size / 1024) : 0);
 const statSize = (p) => statSync(p).size;
@@ -133,26 +137,34 @@ function og() {
     process.exitCode = 1;
     return;
   }
-  const dir = join(root, "node_modules/.cache");
-  if (!existsSync(dir)) execFileSync("mkdir", ["-p", dir]);
-  const titleFile = join(dir, "og-title.txt");
-  const subFile = join(dir, "og-sub.txt");
+  // Absolute Windows paths contain a drive-letter colon, which ffmpeg's
+  // filter-graph parser cannot escape reliably. Run ffmpeg with this
+  // directory as cwd and use colon-free relative paths inside the filter.
+  const dir = join(tmpdir(), "courses-og");
+  mkdirSync(dir, { recursive: true });
+  copyFileSync(serif, join(dir, "font.ttf"));
+  const titleFile = "title.txt";
+  const subFile = "sub.txt";
   const { courses } = JSON.parse(readFileSync(join(root, "data/courses.json"), "utf8"));
-  writeFileSync(titleFile, "Open Courses");
-  writeFileSync(subFile, `${courses.length} free, self-paced courses - videos, guides, ebooks, slides and code`);
+  writeFileSync(join(dir, titleFile), "Open Courses");
+  writeFileSync(join(dir, subFile), `${courses.length} free, self-paced courses - videos, guides, ebooks, slides and code`);
 
   ffmpeg(
     "-f", "lavfi", "-i", "color=c=0x0f172a:s=1200x630:d=1",
     "-vf", [
       "drawbox=x=0:y=0:w=1200:h=8:color=0x2563eb:t=fill",
-      `drawtext=fontfile='${serif}':textfile='${titleFile}':fontcolor=0xf8fafc:fontsize=96:x=80:y=170`,
-      `drawtext=fontfile='${serif}':textfile='${subFile}':fontcolor=0xa8b6c8:fontsize=34:x=80:y=320`,
-      "drawtext=fontfile='" + serif + "':fontcolor=0x7cc0ff:fontsize=28:x=80:y=520:text='RSQUARED ACADEMY'",
+      `drawtext=fontfile=font.ttf:textfile=${titleFile}:fontcolor=0xf8fafc:fontsize=96:x=80:y=170`,
+      `drawtext=fontfile=font.ttf:textfile=${subFile}:fontcolor=0xa8b6c8:fontsize=34:x=80:y=320`,
+      `drawtext=fontfile=font.ttf:fontcolor=0x7cc0ff:fontsize=28:x=80:y=520:text=RSQUARED\\ ACADEMY`,
     ].join(","),
     "-frames:v", "1",
     "-q:v", "2",
-    join(ASSETS, "og-card.jpg")
+    "og-card.jpg",
+    { cwd: dir }
   );
+  // EXDEV: temp and repo may live on different drives, so copy + remove.
+  copyFileSync(join(dir, "og-card.jpg"), join(ASSETS, "og-card.jpg"));
+  rmSync(join(dir, "og-card.jpg"), { force: true });
   console.log(`og-card.jpg  ${kb(join(ASSETS, "og-card.jpg"))} KB  (1200x630)`);
 }
 
