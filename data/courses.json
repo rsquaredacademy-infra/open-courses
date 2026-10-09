@@ -204,7 +204,7 @@
         { "type": "ebook", "label": "eBook chapter", "href": "https://wrangle-r.rsquaredacademy.com/lubridate.html" },
         { "type": "slides", "label": "Slides: Date & Time", "href": "https://slides.rsquaredacademy.com/data-wrangling/lubridate/datetime.html#/" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/1072419" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/1072419" }
       ]
     },
     {
@@ -224,7 +224,7 @@
         { "type": "guide", "label": "Blog: Regular Expressions in R", "href": "https://blog.rsquaredacademy.com/regular-expression-in-r/" },
         { "type": "slides", "label": "Slides: Regular Expressions", "href": "https://slides.rsquaredacademy.com/regex/regex.html" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/356612" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/356612" }
       ]
     },
     {
@@ -264,7 +264,7 @@
         { "type": "guide", "label": "Blog: Market Basket Analysis", "href": "https://blog.rsquaredacademy.com/market-basket-analysis-in-r/" },
         { "type": "slides", "label": "Slides: Market Basket Analysis", "href": "https://slides.rsquaredacademy.com/mba/mba.html" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/335377" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/335377" }
       ]
     },
     {
@@ -286,7 +286,7 @@
         { "type": "guide", "label": "Blog: RFM Analysis", "href": "https://blog.rsquaredacademy.com/customer-segmentation-using-rfm-analysis/" },
         { "type": "slides", "label": "Slides: RFM Analysis", "href": "https://slides.rsquaredacademy.com/rfm/rfm.html" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/416146" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/416146" }
       ]
     },
     {
@@ -310,7 +310,7 @@
         { "type": "ebook", "label": "eBook", "href": "https://rdbsql.rsquaredacademy.com/" },
         { "type": "slides", "label": "Slides: Databases & SQL", "href": "https://slides.rsquaredacademy.com/sql/sqlite.html#/section" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/430439" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/430439" }
       ]
     },
     {
@@ -333,7 +333,7 @@
         { "type": "ebook", "label": "eBook", "href": "https://bash-intro.rsquaredacademy.com/" },
         { "type": "slides", "label": "Slides: Shell (PDF)", "href": "https://slides.rsquaredacademy.com/github/shell.pdf" },
         { "type": "code", "label": "GitHub", "href": "https://github.com/rsquaredacademy-education/online-courses/" },
-        { "type": "lab", "label": "RStudio Cloud lab", "href": "https://rstudio.cloud/project/518720" }
+        { "type": "lab", "label": "Posit Cloud lab", "href": "https://posit.cloud/project/518720" }
       ]
     }
   ]
