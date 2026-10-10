@@ -58,6 +58,9 @@ const GROUP_LABELS = {
 /** Stable top-to-bottom order for the resource rows, regardless of data order. */
 const GROUP_ORDER = ["video", "guide", "ebook", "slides", "code", "lab"];
 
+/** The row label already names the type, so "Blog: X" / "Slides: X" repeats it. */
+const REDUNDANT_PREFIX = /^(blog|slides|ebook|video)\s*:\s*/i;
+
 const ORIGIN = "courses.rsquaredacademy.com";
 
 const esc = (s) =>
@@ -135,7 +138,9 @@ function renderResources(links, primary) {
           const attrs = internal
             ? ""
             : ' target="_blank" rel="noopener noreferrer"';
-          return `<a href="${esc(item.href)}"${cls}${attrs}>${esc(item.label)}</a>`;
+          return `<a href="${esc(item.href)}"${cls}${attrs}>${esc(
+            item.label.replace(REDUNDANT_PREFIX, "")
+          )}</a>`;
         })
         .join('<span class="lres-sep" aria-hidden="true">&middot;</span>');
       return (
