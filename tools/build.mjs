@@ -41,6 +41,23 @@ const LINK_ICONS = {
   lab: "bi-cloud",
 };
 
+/** One link per card is promoted to the primary call to action; ranked by type. */
+const PRIMARY_RANK = ["course", "video", "guide", "lab", "ebook", "slides", "code"];
+const CTA_LABELS = { course: "Start the course", video: "Watch the playlist" };
+
+/** [singular, plural] labels for the grouped resource rows. */
+const GROUP_LABELS = {
+  video: ["Video", "Videos"],
+  guide: ["Guide", "Guides"],
+  ebook: ["eBook", "eBooks"],
+  slides: ["Slides", "Slides"],
+  code: ["Code", "Code"],
+  lab: ["Lab", "Labs"],
+};
+
+/** Stable top-to-bottom order for the resource rows, regardless of data order. */
+const GROUP_ORDER = ["video", "guide", "ebook", "slides", "code", "lab"];
+
 const ORIGIN = "courses.rsquaredacademy.com";
 
 const esc = (s) =>
@@ -60,7 +77,7 @@ function isInternal(href) {
   }
 }
 
-function renderLink(link) {
+function renderLink(link, modifier = "") {
   const internal = isInternal(link.href);
   const icon = `<i class="${LINK_ICONS[link.type] || "bi-link-45deg"}" aria-hidden="true"></i>`;
   const ext = internal
@@ -69,11 +86,67 @@ function renderLink(link) {
   const attrs = internal
     ? ""
     : ' target="_blank" rel="noopener noreferrer"';
-  const primary = link.type === "course" ? " primary" : "";
   return (
-    `<a class="labtn${primary}" href="${esc(link.href)}"${attrs}>` +
+    `<a class="labtn${modifier}" href="${esc(link.href)}"${attrs}>` +
     `${icon}<span>${esc(link.label)}</span>${ext}</a>`
   );
+}
+
+/** The link the card heading and the main button both point at. */
+function primaryLink(links) {
+  for (const type of PRIMARY_RANK) {
+    const link = links.find((l) => l.type === type);
+    if (link) return link;
+  }
+  return links[0];
+}
+
+function renderPrimary(link) {
+  const cta = { ...link, label: CTA_LABELS[link.type] || link.label };
+  return renderLink(cta, " primary lcta");
+}
+
+/** Remaining links, grouped by resource type into one compact row per type. */
+function renderResources(links, primary) {
+  const groups = new Map();
+  for (const link of links) {
+    if (link === primary) continue;
+    if (!groups.has(link.type)) groups.set(link.type, []);
+    groups.get(link.type).push(link);
+  }
+
+  const ordered = [
+    ...GROUP_ORDER.filter((type) => groups.has(type)),
+    ...[...groups.keys()].filter((type) => !GROUP_ORDER.includes(type)),
+  ];
+
+  const rows = ordered
+    .map((type) => {
+      const items = groups.get(type);
+      const labels = GROUP_LABELS[type] || [type, type];
+      const icon = `<i class="${LINK_ICONS[type] || "bi-link-45deg"}" aria-hidden="true"></i>`;
+      const label = `<span class="lres-label">${esc(
+        labels[items.length > 1 ? 1 : 0]
+      )}</span>`;
+      const anchors = items
+        .map((item) => {
+          const internal = isInternal(item.href);
+          const cls = internal ? "" : ' class="ext"';
+          const attrs = internal
+            ? ""
+            : ' target="_blank" rel="noopener noreferrer"';
+          return `<a href="${esc(item.href)}"${cls}${attrs}>${esc(item.label)}</a>`;
+        })
+        .join('<span class="lres-sep" aria-hidden="true">&middot;</span>');
+      return (
+        `<li class="lres-group">${icon}${label}` +
+        `<span class="lres-links">${anchors}</span></li>`
+      );
+    })
+    .join("\n              ");
+
+  if (!rows) return "";
+  return `<ul class="lres">\n              ${rows}\n            </ul>`;
 }
 
 function renderCard(course) {
@@ -93,7 +166,8 @@ function renderCard(course) {
         .join("")}</ul></details>`
     : "";
 
-  const actions = course.links.map(renderLink).join("\n              ");
+  const primary = primaryLink(course.links);
+  const resources = renderResources(course.links, primary);
 
   return `<article class="lcard course-card" id="${esc(course.slug)}" data-track="${esc(
     course.track
@@ -105,22 +179,17 @@ function renderCard(course) {
               <p class="ltrack">${esc(TRACK_NAMES[course.track] || course.track)}<span class="lpill ${esc(
     course.level
   )}">${esc(LEVEL_NAMES[course.level] || course.level)}</span></p>
-              <h2><a href="${esc(
-                course.links.find((l) => l.type === "course")?.href ||
-                  course.links[0].href
-              )}"${
-    isInternal(
-      course.links.find((l) => l.type === "course")?.href ||
-        course.links[0].href
-    )
+              <h2><a href="${esc(primary.href)}"${
+    isInternal(primary.href)
       ? ""
       : ' target="_blank" rel="noopener noreferrer"'
   }>${esc(course.title)}</a></h2>
               <p class="lout">${esc(course.blurb)}</p>
               ${details}
-              <p class="lactions">
-              ${actions}
-              </p>
+              <div class="lactions">
+              ${renderPrimary(primary)}
+              ${resources}
+              </div>
             </div>
           </article>`;
 }
