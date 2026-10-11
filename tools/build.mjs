@@ -151,7 +151,7 @@ function renderResources(links, primary) {
     .join("\n              ");
 
   if (!rows) return "";
-  return `<ul class="lres">\n              ${rows}\n            </ul>`;
+  return `<ul class="lres">\n              ${rows}\n              </ul>`;
 }
 
 function renderCard(course) {
@@ -190,11 +190,9 @@ function renderCard(course) {
       : ' target="_blank" rel="noopener noreferrer"'
   }>${esc(course.title)}</a></h2>
               <p class="lout">${esc(course.blurb)}</p>
-              ${details}
-              <div class="lactions">
-              ${renderPrimary(primary)}
               ${resources}
-              </div>
+              ${details}
+              ${renderPrimary(primary)}
             </div>
           </article>`;
 }
