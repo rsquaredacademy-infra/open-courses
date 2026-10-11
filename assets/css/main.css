@@ -354,7 +354,9 @@
 .lbody h2 a { color: var(--ink); border-bottom: 0; }
 .lbody h2 a:hover { color: var(--accent); }
 
-.lout { color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+/* The blurb is the only growing block: it absorbs the difference in card height
+   so the resource list, the topics disclosure and the CTA keep one baseline. */
+.lout { flex: 1 1 auto; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
 
 .lcard details {
   font-size: 0.8125rem;
@@ -370,9 +372,7 @@
 .lcard details ul { margin: 0.5rem 0 0.25rem 1.1rem; padding: 0; max-height: 168px; overflow: auto; }
 .lcard details li { font-size: 0.8125rem; }
 
-/* One primary action on top, every other resource in an aligned list below. */
-.lactions { display: grid; gap: 0.6rem; margin-top: auto; padding-top: 0.5rem; }
-
+/* Footer block: full-width primary action, resources aligned above it. */
 .labtn {
   display: inline-flex;
   align-items: center;
@@ -395,6 +395,7 @@
 .labtn.primary:hover { background: var(--ink-hover); border-color: var(--ink-hover); color: var(--on-ink); }
 
 .labtn.lcta {
+  flex: 0 0 auto;
   justify-content: center;
   width: 100%;
   padding: 0.55rem 0.8rem;
@@ -404,6 +405,7 @@
 
 /* icon gutter | type label | links: identical columns on every row and card */
 .lres {
+  flex: 0 0 auto;
   list-style: none;
   margin: 0;
   padding: 0.5rem 0 0;
@@ -412,6 +414,8 @@
   gap: 0.24rem;
   font-size: 0.8125rem;
 }
+
+.lcard details { flex: 0 0 auto; }
 
 .lres-group { display: grid; grid-template-columns: 1.05rem 4.5rem 1fr; column-gap: 0.45rem; align-items: first baseline; }
 
@@ -547,6 +551,6 @@ a.ext::after {
 /* ---------- Print ---------- */
 
 @media print {
-  .site-header, .site-footer, .filterbar, .consent, .lactions { display: none !important; }
+  .site-header, .site-footer, .filterbar, .consent, .lres, .lcta { display: none !important; }
   .lcard { break-inside: avoid; border-color: var(--line); }
 }
