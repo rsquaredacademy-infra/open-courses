@@ -1,6 +1,7 @@
 /* Theme toggle, mobile nav and course filter/search.
-   The pre-paint theme resolver lives inline in <head> (tokens.css expects
-   data-theme on <html>); this file only handles user interaction. */
+   The pre-paint theme resolver lives in assets/js/theme-init.js
+   (tokens.css expects data-theme on <html>); this file only handles user
+   interaction. */
 (function () {
   "use strict";
 
