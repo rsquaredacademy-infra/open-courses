@@ -44,86 +44,10 @@
   <link href="/assets/css/tokens.css" rel="stylesheet">
   <link href="/assets/css/main.css" rel="stylesheet">
 
-  <script src="/assets/js/theme-init.js"></script>
+  <link rel="stylesheet" href="/site-kit/rsa-consent.css">
+  <script src="/site-kit/rsa-analytics.js" data-ga-id="G-2QSPEL5WM6" async></script>
 
-  <!-- TODO(replace): set the GA4 measurement ID for courses.rsquaredacademy.com
-       (placeholder below is NOT a live property). Nothing reaches Google until
-       the visitor chooses; without a choice the banner stays and no tag loads. -->
-  <script>
-    (function () {
-      "use strict";
-      var MEASUREMENT_ID = "G-XXXXXXXXXX";
-      var STORAGE_KEY = "ga-consent";
-      var DENIED = {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
-        functionality_storage: "denied",
-        personalization_storage: "denied",
-        security_storage: "granted"
-      };
-      function readChoice() {
-        try {
-          var v = window.localStorage.getItem(STORAGE_KEY);
-          return v === "granted" || v === "denied" ? v : null;
-        } catch (e) { return null; }
-      }
-      function writeChoice(v) {
-        try { window.localStorage.setItem(STORAGE_KEY, v); } catch (e) { /* private mode */ }
-      }
-      var loaded = false;
-      function loadGA4(choice) {
-        if (loaded || MEASUREMENT_ID === "G-XXXXXXXXXX") return;
-        loaded = true;
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { window.dataLayer.push(arguments); }
-        window.gtag = window.gtag || gtag;
-        gtag("consent", "default", DENIED);
-        if (choice === "granted") {
-          gtag("consent", "update", {
-            ad_storage: "granted",
-            ad_user_data: "granted",
-            ad_personalization: "granted",
-            analytics_storage: "granted",
-            functionality_storage: "granted",
-            personalization_storage: "granted"
-          });
-        }
-        gtag("js", new Date());
-        gtag("config", MEASUREMENT_ID);
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + MEASUREMENT_ID;
-        document.head.appendChild(s);
-      }
-      function hideBanner() {
-        var el = document.getElementById("consent-banner");
-        if (el) el.remove();
-      }
-      function decide(choice) {
-        writeChoice(choice);
-        hideBanner();
-        loadGA4(choice);
-      }
-      function init() {
-        var existing = readChoice();
-        if (existing) { hideBanner(); loadGA4(existing); return; }
-        var banner = document.getElementById("consent-banner");
-        if (!banner) return;
-        var accept = document.getElementById("consent-accept");
-        var deny = document.getElementById("consent-deny");
-        if (accept) accept.addEventListener("click", function () { decide("granted"); });
-        if (deny) deny.addEventListener("click", function () { decide("denied"); });
-        banner.focus();
-      }
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-      } else {
-        init();
-      }
-    })();
-  </script>
+  <script src="/assets/js/theme-init.js"></script>
 
   {{JSON_LD}}
   <!-- Built {{BUILD_DATE}} from data/courses.json by tools/build.mjs - do not edit directly -->
@@ -320,16 +244,9 @@
           <i class="bi bi-rss" aria-hidden="true"></i>
         </a>
       </div>
+      <p>We use Google Analytics 4 to understand how people use this site (pages visited, referring sites, device type and approximate location) so we can improve our free learning material. Google Analytics uses cookies and a pseudonymous identifier; we don't use it for advertising and we never send Google names or email addresses. Visitors in the European Economic Area, the United Kingdom and Switzerland are asked for consent first, and if they decline, no analytics cookies are stored. Anyone can switch analytics off at any time: <a href="#" data-rsa-analytics-optout>Turn off analytics</a>.</p>
     </div>
   </footer>
-
-  <aside class="consent" id="consent-banner" role="region" aria-label="Cookie consent" tabindex="-1">
-    <p class="consent-text">This site uses Google Analytics to count visits. Nothing is sent to Google until you choose. Choosing &ldquo;essential only&rdquo; still allows cookieless measurement; choosing &ldquo;accept&rdquo; also allows cookies and audience features.</p>
-    <div class="consent-actions">
-      <button type="button" class="consent-btn" id="consent-deny">Essential only</button>
-      <button type="button" class="consent-btn consent-btn-primary" id="consent-accept">Accept</button>
-    </div>
-  </aside>
 
   <script src="/assets/js/main.js" defer></script>
 </body>
